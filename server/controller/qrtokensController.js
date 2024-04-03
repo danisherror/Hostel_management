@@ -22,3 +22,19 @@ exports.getallqrtokens=BigPromise(async(req,res,next)=>{
         result
     })
 })
+
+exports.getsingleqrtokenbyid=BigPromise(async(req,res,next)=>{
+    const user=req.params.id
+    const result=await Qrtokens.find({user})
+    res.status(200).json({
+        result
+    })
+})
+
+exports.getsingleqrtokenbytoken=BigPromise(async(req,res,next)=>{
+    const user=req.user._id
+    const result=await Qrtokens.find({user})
+    res.status(200).json({
+        result
+    })
+})

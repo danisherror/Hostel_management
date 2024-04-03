@@ -31,6 +31,7 @@ import GetStudentFeedbacks from "./Admin/FeedBack/ShowFeedback"
 import ShowStudentProfile from "./Admin/Student/ShowStudentProfile"
 import GetStudentProfile from "./Admin/Student/GetStudentProfiles"
 import QRScanner from "./Admin/Scanner/Scanner"
+import GetAllQrTokens from "./Admin/Scanner/GetAllQrcodes"
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -318,6 +319,15 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <QRScanner />
+            </>
+          }
+        />
+        <Route
+          path="/getAllQrTokens"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <GetAllQrTokens />
             </>
           }
         />
