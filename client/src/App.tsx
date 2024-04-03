@@ -28,6 +28,9 @@ import AEditstudentLeaveApplication from "./Admin/LeaveApplication/EditLeaveAppl
 import ChangeRoomIssueStatus from "./Admin/RoomComplaints/EditRoomCOmplaints"
 import GetStudentRoomIsses from "./Admin/RoomComplaints/ShowRoomComplaints"
 import GetStudentFeedbacks from "./Admin/FeedBack/ShowFeedback"
+import ShowStudentProfile from "./Admin/Student/ShowStudentProfile"
+import GetStudentProfile from "./Admin/Student/GetStudentProfiles"
+import QRScanner from "./Admin/Scanner/Scanner"
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -288,6 +291,33 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <GetStudentFeedbacks />
+            </>
+          }
+        />
+        <Route
+          path="/ShowStudentProfile"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ShowStudentProfile />
+            </>
+          }
+        />
+        <Route
+          path="/getallStudents"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <GetStudentProfile />
+            </>
+          }
+        />
+        <Route
+          path="/scanqrcode"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <QRScanner />
             </>
           }
         />

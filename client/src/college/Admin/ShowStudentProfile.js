@@ -10,7 +10,7 @@ const ShowStudentProfile = () => {
     console.log("dsdsds ", getuserdata);
     const id = localStorage.getItem('id');
     const getdata = async () => {
-        const res = await fetch(`/api/v1/astudentProfile/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/astudentProfile/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const ShowStudentProfile = () => {
 
             <Navbar />
 
-            <div class="student-profile py-4" 
+            <div class="student-profile py-4"
             style={{
                 backgroundImage: `url(${backgroundImage})`, position: 'fixed',
                 width: '100%',
