@@ -39,7 +39,7 @@ const ChangeLeaveApplicationStatus = () => {
         }
         const token = localStorage.getItem('token');
         console.log(startDate,endDate,reason)
-        const response = await fetch(`/api/v1/updateleaveappliacation/${id}`, {
+        const response = await fetch(`http://localhost:8000/api/v1/updateleaveappliacation/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -65,19 +65,19 @@ const ChangeLeaveApplicationStatus = () => {
     };
     const getdata = async () => {
 
-        const res = await fetch(`/api/v1/getsingleleaveapplication/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/getsingleleaveapplication/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             }
         });
-    
+
         const data = await res.json();
         console.log(data);
-    
+
         if (res.status === 422 || !data) {
             console.log("error ");
-    
+
         } else {
             // setINP(data.user)
             setStartDate(data.result.startDate);
@@ -85,10 +85,10 @@ const ChangeLeaveApplicationStatus = () => {
             setReason(data.result.reason);
             setStatus(data.result.status);
             console.log("get data");
-    
+
         }
     }
-    
+
       useEffect(() => {
         getdata();
     }, []);

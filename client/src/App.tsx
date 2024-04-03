@@ -9,7 +9,7 @@ import EditLeaveApplication from './Student/LeaveApplication/EditLeave'
 import Roomcomplaint from "./Student/RoomComplaint/RoomComplaint";
 import PrintRoomComplaints from "./Student/RoomComplaint/ShowComplaint";
 import EditComplaint from "./Student/RoomComplaint/EditComplaint";
-import GetStudentFeedbacks from "./Student/FeedBack/FeedBack";
+import FeedbackPage from "./Student/FeedBack/FeedBack";
 import PrintStudentFeedbacks from "./Student/FeedBack/ShowFeedback";
 import EditStudentFeedBack from "./Student/FeedBack/EditFeedBack"
 import ApplyHostel from "./Student/Hostel/ApplyHostel"
@@ -23,6 +23,11 @@ import ASetting from "./Admin/Profile/Setting"
 import GetHostelDetails from "./Admin/Hostel/RoomInfo"
 import CreateHostel from "./Admin/Hostel/CreateHostel"
 import DeleteHostel from "./Admin/Hostel/DeleteHostel"
+import GetStudentLeaveApplication from "./Admin/LeaveApplication/showLeaveApplication"
+import AEditstudentLeaveApplication from "./Admin/LeaveApplication/EditLeaveApplication"
+import ChangeRoomIssueStatus from "./Admin/RoomComplaints/EditRoomCOmplaints"
+import GetStudentRoomIsses from "./Admin/RoomComplaints/ShowRoomComplaints"
+import GetStudentFeedbacks from "./Admin/FeedBack/ShowFeedback"
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -149,11 +154,11 @@ function App() {
         />
 
          <Route
-          path="/getStudentFeedback"
+          path="/feedback"
           element={
             <>
               <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <GetStudentFeedbacks />
+              <FeedbackPage />
             </>
           }
         />
@@ -238,6 +243,51 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <DeleteHostel />
+            </>
+          }
+        />
+        <Route
+          path="/getLeaveApplication"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <GetStudentLeaveApplication />
+            </>
+          }
+        />
+        <Route
+          path="/changeleaveApplicationStatus"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <AEditstudentLeaveApplication />
+            </>
+          }
+        />
+        <Route
+          path="/getstudentroomissues"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <GetStudentRoomIsses />
+            </>
+          }
+        />
+        <Route
+          path="/changerooomissueStatus"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ChangeRoomIssueStatus />
+            </>
+          }
+        />
+        <Route
+          path="/getStudentFeedback"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <GetStudentFeedbacks />
             </>
           }
         />

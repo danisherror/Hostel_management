@@ -97,7 +97,7 @@ const PrintLeaveApplications = () => {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </>
     )

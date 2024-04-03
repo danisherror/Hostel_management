@@ -15,10 +15,10 @@ const ChangeRoomIssueStatus = () => {
 
     const id = localStorage.getItem('id');
 
-    
+
     const getdata = async () => {
 
-        const res = await fetch(`/api/v1/getsinglecomplain/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/getsinglecomplain/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const ChangeRoomIssueStatus = () => {
         console.log(status)
         try {
             e.preventDefault();
-        const response = await fetch(`/api/v1/editstudentcomplaintstatus/${id}`, {
+        const response = await fetch(`http://localhost:8000/api/v1/editstudentcomplaintstatus/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const ChangeRoomIssueStatus = () => {
         // navigate('/ahomepage');
     } catch (error) {
         console.error('Error:', error);
-       
+
     }
     };
 
@@ -97,7 +97,7 @@ const ChangeRoomIssueStatus = () => {
                     <select
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        
+
                         style={{ width: "100%", padding: "10px" }}
                     >
                         <option value="">Select Title</option>
@@ -118,7 +118,7 @@ const ChangeRoomIssueStatus = () => {
                             <option value="">Select Title</option>
                             <option value="Pending">Pending</option>
                             <option value="Closed">Closed</option>
-                            
+
                         </select> */}
                     <select
                         value={status}

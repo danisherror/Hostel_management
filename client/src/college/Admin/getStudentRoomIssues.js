@@ -19,7 +19,7 @@ const PrintRoomComplaints = () => {
     console.log(token)
     const getdata = async () => {
 
-        const res = await fetch(`/api/v1/getstudentroomissues`, {
+        const res = await fetch(`http://localhost:8000/api/v1/getstudentroomissues`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const PrintRoomComplaints = () => {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </>
     )
