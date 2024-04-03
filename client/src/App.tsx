@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 //------------------------------------------------------------------------------
+//student
 import Landing from './college/Logins/LandingPage';
 import LeaveApplication from './Student/LeaveApplication/ApplyLeave'
 import Printleaveapplication from './Student/LeaveApplication/Showleave'
@@ -11,12 +12,22 @@ import EditComplaint from "./Student/RoomComplaint/EditComplaint";
 import GetStudentFeedbacks from "./Student/FeedBack/FeedBack";
 import PrintStudentFeedbacks from "./Student/FeedBack/ShowFeedback";
 import EditStudentFeedBack from "./Student/FeedBack/EditFeedBack"
+import ApplyHostel from "./Student/Hostel/ApplyHostel"
+import UProfile from './Student/Profile/Profile';
+import USettings from './Student/Profile/Settings';
 //------------------------------------------------------------------------------
+//admin
+import AdminDashBoard from './pages/Dashboard/AdminDashBoard';
+import AProfile from "./Admin/Profile/Profile"
+import ASetting from "./Admin/Profile/Setting"
+import GetHostelDetails from "./Admin/Hostel/RoomInfo"
+import CreateHostel from "./Admin/Hostel/CreateHostel"
+import DeleteHostel from "./Admin/Hostel/DeleteHostel"
+//-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
-import Calendar from './pages/Calendar';
 import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
 import FormElements from './pages/Form/FormElements';
@@ -64,20 +75,20 @@ function App() {
           }
         />
         <Route
-          path="/profile"
+          path="/uprofile"
           element={
             <>
               <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Profile />
+              <UProfile />
             </>
           }
         />
         <Route
-          path="/settings"
+          path="/usettings"
           element={
             <>
               <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Settings />
+              <USettings />
             </>
           }
         />
@@ -165,11 +176,68 @@ function App() {
           }
         />
         <Route
-          path="/calendar"
+          path="/applyHostel"
           element={
             <>
-              <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Calendar />
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ApplyHostel />
+            </>
+          }
+        />
+        {/* Admin Start*/}
+
+        <Route
+          path="/ahomepage"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <AdminDashBoard />
+            </>
+          }
+        />
+        <Route
+          path="/aprofile"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <AProfile />
+            </>
+          }
+        />
+        <Route
+          path="/asettings"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ASetting />
+            </>
+          }
+        />
+
+        <Route
+          path="/getHostelDetails"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <GetHostelDetails />
+            </>
+          }
+        />
+        <Route
+          path="/createHostel"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <CreateHostel />
+            </>
+          }
+        />
+         <Route
+          path="/deleteHostel"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <DeleteHostel />
             </>
           }
         />

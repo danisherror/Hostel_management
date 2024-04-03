@@ -1,21 +1,20 @@
-import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
-import { useStatus } from '../Auth/Auth';
-import DefaultLayout from '../layout/DefaultLayout';
-import CoverOne from '../images/cover/cover-01.png';
-import userSix from '../images/user/user-06.png';
+import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
+import DefaultLayout from '../../layout/DefaultLayout';
+import CoverOne from '../../images/cover/cover-01.png';
+import userSix from '../../images/user/user-06.png';
 import { Link } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 import React, { useEffect, useState } from 'react'
 
 const Profile = () => {
-  const statusStd = localStorage.getItem("status")
+
   const [getuserdata, setStudentDetail] = useState({});
   console.log("dsdsds ", getuserdata);
   const getToken = () => {
       return localStorage.getItem('token');
   }
   const token = getToken();
-  const storeTokenInLS = useStatus();
+
   console.log(token)
   const [qrCodeText, setQRCodeText] = useState('');
   const getdata = async () => {

@@ -55,7 +55,7 @@ const SignIn: React.FC = () => {
         }
       }
       else {
-        const response = await axios.post('/api/v1/asignin', {
+        const response = await axios.post('http://localhost:8000/api/v1/asignin', {
           email,
           password,
         })

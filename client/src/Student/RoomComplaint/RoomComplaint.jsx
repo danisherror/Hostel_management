@@ -49,29 +49,29 @@ const FormElements = () => {
                         <div className="relative">
 
                             <select
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
 
-                            style={{ width: "100%", padding: "10px" }}
-                        >
-                            <option value="">Select Title</option>
-                            <option value="Room Cleaning">Room Cleaning</option>
-                            <option value="Electronics Not Working">Electronics Not Working</option>
-                            <option value="Animals Problem">Animals Problem</option>
-                            <option value="Others">Others</option>
-                            {/* Add more options as needed */}
-                        </select>
+                                style={{ width: "100%", padding: "10px" }}
+                            >
+                                <option value="">Select Title</option>
+                                <option value="Room Cleaning">Room Cleaning</option>
+                                <option value="Electronics Not Working">Electronics Not Working</option>
+                                <option value="Animals Problem">Animals Problem</option>
+                                <option value="Others">Others</option>
+                                {/* Add more options as needed */}
+                            </select>
 
                         </div>
                         <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
                             <label className="mb-3 block text-black dark:text-white">
-                            Issue
+                                Issue
                             </label>
                             <textarea
                                 rows={6}
                                 value={review}
-                            onChange={(e) => setReview(e.target.value)}
+                                onChange={(e) => setReview(e.target.value)}
                                 placeholder="Issue"
                                 className="w-full rounded-lg border-[1.5px] border-primary bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input dark:text-white"
                             ></textarea>

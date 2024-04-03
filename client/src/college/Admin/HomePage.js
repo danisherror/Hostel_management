@@ -54,7 +54,7 @@ const HomePage = () => {
 
             <Navbar />
 
-            <div class="student-profile py-4" 
+            <div class="student-profile py-4"
             style={{
                 backgroundImage: `url(${backgroundImage})`, position: 'fixed',
                 width: '100%',

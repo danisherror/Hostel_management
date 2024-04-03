@@ -40,7 +40,7 @@ const ApplyHostel = () => {
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    hostelName, block, 
+                    hostelName, block,
                     roomNumber:roomNo
                 })
             });
@@ -51,10 +51,10 @@ const ApplyHostel = () => {
             }
             else if(response.status === 400) {
                 alert("student is already assigned to a room")
-             } 
+             }
             else if(response.status === 401) {
                 alert("Room is already full. Please choose another room.")
-             } 
+             }
              else if(response.status===402)
              {
                 alert("Student is already assigned to this room")
