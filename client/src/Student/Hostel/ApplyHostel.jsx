@@ -9,18 +9,32 @@ const FormElements = () => {
         block: '',
         roomNo: ''
     });
-
+    const [listroom,setListroom]=useState([]);
+    const [hostelDetails, setHostelDetails] = useState([]);
     const getToken = () => {
         return localStorage.getItem('token');
     }
     const token = getToken();
     console.log(token);
 
+    const handleBlockChange = (event) => {
+        const selectedBlock = event.target.value;
+        setFormData((prevData) => ({ ...prevData, block: selectedBlock, roomNo: '' }));
+        const selectedHostel = formData.hostelName;
 
+        const hostel = hostelDetails.find(hostel => hostel.hostelName === selectedHostel);
+
+        if (hostel) {
+            const blockIndex = hostel.blockName.indexOf(selectedBlock);
+            const roomnoo=hostel.roomNumber[blockIndex];
+            console.log(roomnoo);
+            setListroom(roomnoo)
+        }
+
+    };
     const handlehostelNameChange = (event) => {
         const selectedHostel = event.target.value;
-        const blockOptions = selectedHostel === 'fresher' ? ['A', 'B', 'C'] : ['X', 'Y', 'Z'];
-        setFormData((prevData) => ({ ...prevData, hostelName: selectedHostel, block: '' }));
+        setFormData((prevData) => ({ ...prevData, hostelName: selectedHostel, block: '', roomNo: '' }));
     };
 
     const handleSubmit = async (event) => {
@@ -56,8 +70,6 @@ const FormElements = () => {
                 alert("Student is already assigned to this room")
             }
             else {
-                // Handle other status codes appropriately
-                // Consider using more granular error handling
                 console.error('Error:', response.status, response.error);
                 alert(`Error registering.${response.error}`);
             }
@@ -66,15 +78,28 @@ const FormElements = () => {
             alert('An error occurred. Please try again.');
         }
     };
+    useEffect(() => {
+        const getdata = async () => {
+            const res = await fetch(`http://localhost:8000/api/v1/hostelFormDetails`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            const data = await res.json();
+            console.log(data.hostelDetails);
+            setHostelDetails(data.hostelDetails);
+        }
+
+        getdata();
+    }, [token]);
 
     return (
         <DefaultLayout>
             <Breadcrumb pageName="Apply Hostel" />
-
             <div className="grid grid-cols-1 gap-9 sm:grid-cols-1">
-
-
-                {/* <!-- Time and date --> */}
                 <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
                     <div className="flex flex-col gap-5.5 p-6.5">
                         <label className="mb-3 block text-sm font-medium text-black dark:text-white">
@@ -87,56 +112,63 @@ const FormElements = () => {
                                 value={formData.hostelName}
                                 onChange={handlehostelNameChange}
                                 className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-
                             >
                                 <option>select the option below</option>
-                                <option value="Fresher">Fresher Block</option>
-                                <option value="aryabhata">Aryabhata Hostel</option>
+                                {hostelDetails.map(hostel => (
+                                    <option key={hostel.hostelName} value={hostel.hostelName}>
+                                        {hostel.hostelName}
+                                    </option>
+                                ))}
                             </select>
                         </div>
-
-                            {formData.hostelName && (
-                                <div className="relative">
-                                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                        Block
-                        </label>
-                                    <select
-                                        id="block"
-                                        name="block"
-                                        value={formData.block}
-                                        className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-
-                                        onChange={(event) => setFormData((prevData) => ({ ...prevData, block: event.target.value }))}
-                                    >
-                                        <option >select the Block</option>
-                                        {formData.hostelName === 'Fresher' &&
-                                            ['A', 'B', 'C'].map((block) => (
+                        {formData.hostelName && (
+                            <div className="relative">
+                                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                                    Block
+                                </label>
+                                <select
+                                    id="block"
+                                    name="block"
+                                    value={formData.block}
+                                    className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                    onChange={handleBlockChange}
+                                >
+                                    <option>select the Block</option>
+                                    {hostelDetails
+                                        .filter(hostel => hostel.hostelName === formData.hostelName)
+                                        .map(hostel => (
+                                            hostel.blockName.map(block => (
                                                 <option key={block} value={block}>
                                                     {block}
                                                 </option>
-                                            ))}
-                                        {formData.hostelName === 'aryabhata' &&
-                                            ['Block X', 'Block Y', 'Block Z'].map((block) => (
-                                                <option key={block} value={block}>
-                                                    {block}
+                                            ))
+                                        ))
+                                    }
+                                </select>
+                            </div>
+                        )}
+                        {formData.block && (
+                            <div className="relative">
+                                <label htmlFor="roomNo">Room Number</label>
+                                <select
+                                    id="roomNo"
+                                    name="roomNo"
+                                    value={formData.roomNo}
+                                    className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                    onChange={(event) => setFormData((prevData) => ({ ...prevData, roomNo: event.target.value }))}
+                                >
+                                    <option>select the Room Number</option>
+                                    {listroom
+                                        .map(room => (
+                                                <option key={room} value={room}>
+                                                    {room}
                                                 </option>
-                                            ))}
-                                    </select>
-                                </div>
-                            )}
-                        <div className="relative">
-                    <label htmlFor="roomNo">Room Number</label>
-                    <input
-                        id="roomNo"
-                        name="roomNo"
-                        type="text"
-                        placeholder='001'
-                        value={formData.roomNo}
-                        className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-
-                        onChange={(event) => setFormData((prevData) => ({ ...prevData, roomNo: event.target.value }))}
-                    />
-                </div>
+                                            )
+                                        )
+                                    }
+                                </select>
+                            </div>
+                        )}
 
                         <div className="flex justify-center gap-4.5">
                             <button

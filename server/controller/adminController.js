@@ -182,3 +182,38 @@ exports.getStudentHostel = BigPromise(async (req, res, next) => {
         result
     })
 })
+exports.hostelFormDetails= BigPromise(async (req, res, next) => {
+    const hostelName = await CollegeHostelRoom.distinct("hostelName")
+    const name_block=[];
+    for(let i=0;i<hostelName.length;i++)
+    {
+        const blockName =await CollegeHostelRoom.distinct("block", { "hostelName": hostelName[i] })
+        name_block.push({hostelName:hostelName[i],blockName:blockName})
+    }
+    const hostelDetails=[]
+    for(let i=0;i<name_block.length;i++)
+    {
+        const roomNumber = []
+        for(let j=0;j<name_block[i].blockName.length;j++)
+        {
+            const roomNo= await CollegeHostelRoom.distinct("roomNumber", { "hostelName": name_block[i].hostelName, "block": name_block[i].blockName[j] })
+            roomNumber.push(roomNo)
+        }
+        hostelDetails.push({hostelName:name_block[i].hostelName,blockName:name_block[i].blockName,roomNumber:roomNumber})
+    }
+    // for(let i=0;i<hostelDetails.length;i++)
+    // {
+    //     console.log(hostelDetails[i].hostelName)
+    //     for(let j=0;j<hostelDetails[i].blockName.length;j++)
+    //     {
+    //         console.log(hostelDetails[i].blockName);
+    //         for(let k=0;k<hostelDetails[i].roomNumber[j].length;k++)
+    //         {
+    //             console.log(hostelDetails[i].roomNumber[j][k])
+    //         }
+    //     }
+    // }
+    res.status(200).json({
+        hostelDetails
+    })
+})
