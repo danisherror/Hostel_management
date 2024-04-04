@@ -14,6 +14,9 @@ const Profile = () => {
     const id = localStorage.getItem('id');
     const [roomissues, setRoomIssues] = useState([]);
     const [uniqueDate, setuniqueDate] = useState([]);
+    const [getHostel, setHostel] = useState([{
+        hostelName: "None", block: "None", roomNumber: "None"
+    }]);
     const state = {
         series: [
             {
@@ -118,6 +121,28 @@ const Profile = () => {
             console.log(uniqueDatesArray);
             console.log("get data");
         }
+
+        console.log("----------------------------------------------------");
+        const res2 = await fetch(`http://localhost:8000/api/v1/getStudentHostel/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+
+            }
+        });
+        const data2 = await res2.json();
+        if (data2.result.length === 1) {
+            console.log(1)
+            setHostel(data2.result);
+        }
+        else {
+            console.log(2)
+            const ans1 = [{
+                hostelName: "None", block: "None", roomNumber: "None"
+            },]
+            setHostel(ans1);
+        }
+        console.log(data2)
     }
     useEffect(() => {
         getdata();
@@ -171,21 +196,39 @@ const Profile = () => {
                                     {getuserdata.phone}
                                 </span>
                             </div>
+                            <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
+                                <span className="text-sm">Hostel Name</span>
+                                <span className="font-semibold text-black dark:text-white">
+                                    {getHostel[0].hostelName}
+                                </span>
+                            </div>
+                            <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
+                                <span className="text-sm">Block</span>
+                                <span className="font-semibold text-black dark:text-white">
+                                    {getHostel[0].block}
+                                </span>
+                            </div>
+                            <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
+                                <span className="text-sm">Room No</span>
+                                <span className="font-semibold text-black dark:text-white">
+                                    {getHostel[0].roomNumber}
+                                </span>
+                            </div>
 
                         </div>
                         <br></br>
-                        </div>
-                        <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
-                            No of logins per day
-                        </h3>
-                        <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-                            <ReactApexChart
-                                options={options}
-                                series={state.series}
-                                type="line"
-                                height={350}
-                            />
-                        </div>
+                    </div>
+                    <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
+                        No of logins per day
+                    </h3>
+                    <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+                        <ReactApexChart
+                            options={options}
+                            series={state.series}
+                            type="line"
+                            height={350}
+                        />
+                    </div>
 
 
                 </div>

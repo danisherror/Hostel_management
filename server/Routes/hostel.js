@@ -6,5 +6,4 @@ const {isLoggedIn}=require('../middlewares/user')
 
 router.route('/applyhostell').post(isLoggedIn,applyhostel)
 
-
 module.exports=router;

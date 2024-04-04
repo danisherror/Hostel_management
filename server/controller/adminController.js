@@ -173,3 +173,12 @@ exports.deleteHostel = BigPromise(async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+exports.getStudentHostel = BigPromise(async (req, res, next) => {
+    const user = req.params.id;
+    const result = await CollegeHostelRoom.find({ studentIds: user })
+    res.status(201).json({
+        result
+    })
+})

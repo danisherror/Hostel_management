@@ -3,8 +3,8 @@ const BigPromise = require('../middlewares/bigPromise');
 
 exports.applyhostel = BigPromise(async (req, res, next) => {
     // Extract necessary information from request body
-    const {  hostelName, block, roomNumber } = req.body;
-    const studentId=req.user._id
+    const { hostelName, block, roomNumber } = req.body;
+    const studentId = req.user._id
     console.log(hostelName, block, roomNumber)
     try {
         // Check if the specified room exists in the database
