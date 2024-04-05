@@ -1,5 +1,6 @@
 const Admin=require('../models/admin')
 const CollegeHostelRoom = require('../models/hostel')
+const Announcement =require("../models/announcement")
 const BigPromise=require('../middlewares/bigPromise')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
@@ -201,19 +202,35 @@ exports.hostelFormDetails= BigPromise(async (req, res, next) => {
         }
         hostelDetails.push({hostelName:name_block[i].hostelName,blockName:name_block[i].blockName,roomNumber:roomNumber})
     }
-    // for(let i=0;i<hostelDetails.length;i++)
-    // {
-    //     console.log(hostelDetails[i].hostelName)
-    //     for(let j=0;j<hostelDetails[i].blockName.length;j++)
-    //     {
-    //         console.log(hostelDetails[i].blockName);
-    //         for(let k=0;k<hostelDetails[i].roomNumber[j].length;k++)
-    //         {
-    //             console.log(hostelDetails[i].roomNumber[j][k])
-    //         }
-    //     }
-    // }
     res.status(200).json({
         hostelDetails
+    })
+})
+exports.getUniqueHostelNames= BigPromise(async (req, res, next) => {
+    const hostelName = await CollegeHostelRoom.distinct("hostelName")
+    hostelName.push("All");
+    res.status(200).json({
+        hostelName
+    })
+})
+
+exports.createAnnouncement= BigPromise(async (req, res, next) => {
+    const {hostelName,url,announcement}=req.body
+    const result=await Announcement.create({
+        hostelName:hostelName,
+        url:url,
+        announcement:announcement
+    })
+
+    res.status(200).json({
+        result
+    })
+})
+
+exports.showAllAnnouncements= BigPromise(async (req, res, next) => {
+    const hostelName = await CollegeHostelRoom.distinct("hostelName")
+    const result=await Announcement.find();
+    res.status(200).json({
+        result,hostelName
     })
 })

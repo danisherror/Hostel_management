@@ -18,20 +18,22 @@ import USettings from './Student/Profile/Settings';
 //------------------------------------------------------------------------------
 //admin
 import AdminDashBoard from './pages/Dashboard/AdminDashBoard';
-import AProfile from "./Admin/Profile/Profile"
-import ASetting from "./Admin/Profile/Setting"
-import GetHostelDetails from "./Admin/Hostel/RoomInfo"
-import CreateHostel from "./Admin/Hostel/CreateHostel"
-import DeleteHostel from "./Admin/Hostel/DeleteHostel"
-import GetStudentLeaveApplication from "./Admin/LeaveApplication/showLeaveApplication"
-import AEditstudentLeaveApplication from "./Admin/LeaveApplication/EditLeaveApplication"
-import ChangeRoomIssueStatus from "./Admin/RoomComplaints/EditRoomCOmplaints"
-import GetStudentRoomIsses from "./Admin/RoomComplaints/ShowRoomComplaints"
-import GetStudentFeedbacks from "./Admin/FeedBack/ShowFeedback"
-import ShowStudentProfile from "./Admin/Student/ShowStudentProfile"
-import GetStudentProfile from "./Admin/Student/GetStudentProfiles"
-import QRScanner from "./Admin/Scanner/Scanner"
-import GetAllQrTokens from "./Admin/Scanner/GetAllQrcodes"
+import AProfile from "./Admin/Profile/Profile";
+import ASetting from "./Admin/Profile/Setting";
+import GetHostelDetails from "./Admin/Hostel/RoomInfo";
+import CreateHostel from "./Admin/Hostel/CreateHostel";
+import DeleteHostel from "./Admin/Hostel/DeleteHostel";
+import GetStudentLeaveApplication from "./Admin/LeaveApplication/showLeaveApplication";
+import AEditstudentLeaveApplication from "./Admin/LeaveApplication/EditLeaveApplication";
+import ChangeRoomIssueStatus from "./Admin/RoomComplaints/EditRoomCOmplaints";
+import GetStudentRoomIsses from "./Admin/RoomComplaints/ShowRoomComplaints";
+import GetStudentFeedbacks from "./Admin/FeedBack/ShowFeedback";
+import ShowStudentProfile from "./Admin/Student/ShowStudentProfile";
+import GetStudentProfile from "./Admin/Student/GetStudentProfiles";
+import QRScanner from "./Admin/Scanner/Scanner";
+import GetAllQrTokens from "./Admin/Scanner/GetAllQrcodes";
+import CreateAnnouncements from "./Admin/Announcment/CreateAnnouncements";
+import ShowAllAnouncements from "./Admin/Announcment/ShowAnnouncemets"
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -328,6 +330,24 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <GetAllQrTokens />
+            </>
+          }
+        />
+        <Route
+          path="/createAnnouncement"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <CreateAnnouncements />
+            </>
+          }
+        />
+        <Route
+          path="/showAllAnouncements"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ShowAllAnouncements />
             </>
           }
         />
