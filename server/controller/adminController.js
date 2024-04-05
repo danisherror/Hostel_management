@@ -229,7 +229,20 @@ exports.createAnnouncement= BigPromise(async (req, res, next) => {
 
 exports.showAllAnnouncements= BigPromise(async (req, res, next) => {
     const hostelName = await CollegeHostelRoom.distinct("hostelName")
-    const result=await Announcement.find();
+    const result=await Announcement.find().sort({ createdAt: -1 });
+    res.status(200).json({
+        result,hostelName
+    })
+})
+exports.showStudentAnnouncements= BigPromise(async (req, res, next) => {
+    const user=req.user._id;
+    const hostel_student = await CollegeHostelRoom.find({ studentIds: user })
+    const hostelName1 = hostel_student[0].hostelName
+    const op=await Announcement.find({hostelName:hostelName1})
+    const hostelName = await CollegeHostelRoom.distinct("hostelName")
+    const all =await Announcement.find({hostelName:'All'})
+    const result =op.concat(all);
+    console.log(op)
     res.status(200).json({
         result,hostelName
     })

@@ -1,5 +1,5 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import DefaultLayout from '../../layout/AdminLayout';
+import DefaultLayout from '../../layout/DefaultLayout';
 import React, { useEffect, useState } from 'react'
 import { useID } from '../../Auth/Auth';
 import { NavLink } from 'react-router-dom'
@@ -18,7 +18,7 @@ const TableOne = () => {
     console.log(token)
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/showAllAnnouncements`, {
+        const res = await fetch(`http://localhost:8000/api/v1/showStudentAnnouncements`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -92,9 +92,7 @@ const TableOne = () => {
                             <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                                 announcement
                             </th>
-                            <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                                Edit
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -117,14 +115,6 @@ const TableOne = () => {
                                     <p className="text-black dark:text-white">
                                         {issuesEntry.announcement}
                                     </p>
-                                </td>
-
-                                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-
-                                    <NavLink to={"/changerooomissueStatus"}>
-                                        <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                                            onClick={() => storeIdInLs(issuesEntry._id)} >
-                                            edit</button></NavLink>
                                 </td>
                             </tr>
                         ))}

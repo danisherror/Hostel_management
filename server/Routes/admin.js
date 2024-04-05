@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {signup,signin,adminprofile,showAllAnnouncements,createAnnouncement,editImage,getUniqueHostelNames,editAdminProfile,createHostel,deleteHostel,getHostelDetails,getStudentHostel,hostelFormDetails}=require('../controller/adminController')
+const {signup,signin,adminprofile,showAllAnnouncements,createAnnouncement,showStudentAnnouncements,editImage,getUniqueHostelNames,editAdminProfile,createHostel,deleteHostel,getHostelDetails,getStudentHostel,hostelFormDetails}=require('../controller/adminController')
 const {aisLoggedIn}=require('../middlewares/admin')
 const {isLoggedIn}=require('../middlewares/user')
 router.route('/asignup').post(signup)
@@ -18,5 +18,6 @@ router.route('/getUniqueHostelNames/').get(getUniqueHostelNames)
 router.route('/hostelFormDetails').get(isLoggedIn,hostelFormDetails)
 
 router.route('/createAnnouncement').post(aisLoggedIn,createAnnouncement)
-router.route('/showAllAnnouncements').get(isLoggedIn,showAllAnnouncements)
+router.route('/showAllAnnouncements').get(aisLoggedIn,showAllAnnouncements)
+router.route('/showStudentAnnouncements').get(isLoggedIn,showStudentAnnouncements)
 module.exports=router;

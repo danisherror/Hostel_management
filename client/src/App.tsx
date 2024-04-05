@@ -15,6 +15,7 @@ import EditStudentFeedBack from "./Student/FeedBack/EditFeedBack"
 import ApplyHostel from "./Student/Hostel/ApplyHostel"
 import UProfile from './Student/Profile/Profile';
 import USettings from './Student/Profile/Settings';
+import ShowStudentAnnouncements from "./Student/Announcements/showAnnouncements"
 //------------------------------------------------------------------------------
 //admin
 import AdminDashBoard from './pages/Dashboard/AdminDashBoard';
@@ -348,6 +349,16 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <ShowAllAnouncements />
+            </>
+          }
+        />
+
+        <Route
+          path="/showStudentAnnouncements"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ShowStudentAnnouncements />
             </>
           }
         />
