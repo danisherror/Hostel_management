@@ -12,9 +12,6 @@ exports.signup=BigPromise(async(req,res,next)=>{
         // return next(new CustomError('Plz Send Email',400))
         return next(new Error("Name ,email and password are required"))
     }
-    console.log(req.body)
-
-
     const user=await User.create({
         name,
         email,
@@ -24,8 +21,6 @@ exports.signup=BigPromise(async(req,res,next)=>{
         phone,
         semester
     })
-    console.log(user)
-    //method to generte a cookie with the token generated with the expiry date ...........................
    res.status(200).json({
         name,
         email,
@@ -39,7 +34,6 @@ exports.signin=BigPromise(async (req,res)=>{
     const {email,password}=req.body
 
     const user=await User.findOne({email:email}).select("+password")
-    console.log(req.body)
     if(!user)
     {
         return res.status(401).json({
@@ -76,8 +70,6 @@ exports.editImage=BigPromise(async(req,res)=>{
         {
           url:req.body.url
         });
-    console.log(user);
-    console.log("--------------");
     res.status(200).json({
 
     })
@@ -93,7 +85,6 @@ exports.editStudentProfile=BigPromise(async(req,res)=>{
     const user=await User.findByIdAndUpdate(id,req.body,{
         new:true
     });
-    console.log(user);
     res.status(200).json({
 
     })
@@ -106,7 +97,6 @@ exports.editStudentProfile=BigPromise(async(req,res)=>{
 exports.applyHostel=BigPromise(async(req,res)=>{
     const {  hostelName, block, roomNumber } = req.body;
     const studentId=req.user._id
-    console.log(hostelName, block, roomNumber)
     try {
         // Check if the specified room exists in the database
         if (!hostelName || !block || !roomNumber) {
@@ -137,7 +127,6 @@ exports.applyHostel=BigPromise(async(req,res)=>{
         // Update the student's hostel information in the database
         existingRoom.studentIds.push(studentId);
         await existingRoom.save();
-        console.log(existingRoom);
 
         // Return success response
         res.status(200).json({ message: 'Hostel application successful', room: existingRoom });
@@ -166,7 +155,7 @@ exports.aeditStudentProfile=BigPromise(async(req,res)=>{
 exports.getStudentprofiles=BigPromise(async(req,res)=>{
 
     const id=req.user._id
-    const user=await User.find()
+    const user= (await User.find()).reverse()
 
     res.status(200).json({
         user

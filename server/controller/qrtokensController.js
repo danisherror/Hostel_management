@@ -3,7 +3,6 @@ const BigPromise = require('../middlewares/bigPromise');
 
 exports.addqrtokens = BigPromise(async (req, res, next) => {
     const tokens = req.body.scanResults; // Assuming tokens are sent in an array in req.body
-    console.log(tokens);
     for (let i = 0; i < tokens.length; i++) {
         const result = await Qrtokens.create({
             user: tokens[i]._id,

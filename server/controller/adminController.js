@@ -10,7 +10,6 @@ exports.signup=BigPromise(async(req,res,next)=>{
 
     const {name,email,password,url,collegeid,phone}=req.body
     if(!email || !name || !password){
-        // return next(new CustomError('Plz Send Email',400))
         return next(new Error("Name ,email and password are required"))
     }
 
@@ -146,7 +145,7 @@ exports.createHostel = BigPromise(async (req, res) => {
                     await newRoom.save();
                 }
             }
-        console.log('Hostels, blocks, and rooms created successfully.');
+        // console.log('Hostels, blocks, and rooms created successfully.');
         res.status(200).json({ message: 'Hostels, blocks, and rooms created successfully.' });
     } catch (error) {
         console.error('Error creating hostels, blocks, and rooms:', error);
@@ -167,7 +166,7 @@ exports.deleteHostel = BigPromise(async (req, res) => {
         // Delete the hostel
         await CollegeHostelRoom.deleteMany({ hostelName:hostelName });
 
-        console.log(`Hostel '${hostelName}' deleted successfully.`);
+        // console.log(`Hostel '${hostelName}' deleted successfully.`);
         res.status(200).json({ message: `Hostel '${hostelName}' deleted successfully.` });
     } catch (error) {
         console.error('Error deleting hostel:', error);
@@ -242,8 +241,15 @@ exports.showStudentAnnouncements= BigPromise(async (req, res, next) => {
     const hostelName = await CollegeHostelRoom.distinct("hostelName")
     const all =await Announcement.find({hostelName:'All'})
     const result =op.concat(all);
-    console.log(op)
     res.status(200).json({
         result,hostelName
+    })
+})
+
+exports.getsingleAnnouncement= BigPromise(async (req, res, next) => {
+    const user=req.params.id;
+    const result = await Announcement.findOne({_id:user})
+    res.status(200).json({
+        result
     })
 })

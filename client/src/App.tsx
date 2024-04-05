@@ -34,7 +34,8 @@ import GetStudentProfile from "./Admin/Student/GetStudentProfiles";
 import QRScanner from "./Admin/Scanner/Scanner";
 import GetAllQrTokens from "./Admin/Scanner/GetAllQrcodes";
 import CreateAnnouncements from "./Admin/Announcment/CreateAnnouncements";
-import ShowAllAnouncements from "./Admin/Announcment/ShowAnnouncemets"
+import ShowAllAnouncements from "./Admin/Announcment/ShowAnnouncemets";
+import EditAnnouncement from "./Admin/Announcment/EditAnnouncements";
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -359,6 +360,15 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <ShowStudentAnnouncements />
+            </>
+          }
+        />
+        <Route
+          path="/editAnnouncement"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <EditAnnouncement />
             </>
           }
         />

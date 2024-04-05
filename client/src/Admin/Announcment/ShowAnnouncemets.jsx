@@ -121,7 +121,7 @@ const TableOne = () => {
 
                                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
 
-                                    <NavLink to={"/changerooomissueStatus"}>
+                                    <NavLink to={"/editAnnouncement"}>
                                         <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                                             onClick={() => storeIdInLs(issuesEntry._id)} >
                                             edit</button></NavLink>

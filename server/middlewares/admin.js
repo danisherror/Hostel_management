@@ -6,7 +6,7 @@ const jwt=require('jsonwebtoken')
 
 exports.aisLoggedIn=BigPromise(async (req,res,next)=>{
 
-    console.log("Enter middleware")
+
     const token= req.header('Authorization').replace('Bearer ','')
 
     if(!token){
@@ -15,13 +15,13 @@ exports.aisLoggedIn=BigPromise(async (req,res,next)=>{
 
     try {
         const decode=jwt.verify(token,process.env.JWT_SECRET)
-        console.log(decode)             // here we get all the payload information in the form of json
+        // console.log(decode)             // here we get all the payload information in the form of json
 
         req.user=await Admin.findById(decode.id)          // INJECTING MY PROPERTY AS REQ.COOKIE AND MANY OTHER`
         //const user1=await User.find({role:'user'}).find({name:"Arpit Kumar Gajya"}).clone()
         //console.log("USER 1************************")
        // console.log(user1)
-        console.log(req.user)
+        // console.log(req.user)
         //bring in info from db
 
 
