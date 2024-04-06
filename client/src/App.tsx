@@ -54,6 +54,8 @@ import WGetStudentRoomIsses from "./Warden/RoomComplaint/ShowRoomComplaints";
 import WChangeRoomIssueStatus from "./Warden/RoomComplaint/EditRoomCOmplaints";
 import WGetStudentProfile from "./Warden/Student/GetStudentProfiles";
 import WShowStudentProfile from "./Warden/Student/ShowStudentProfile"
+import WQRScanner from "./Warden/Scanner/Scanner";
+import WGetAllQrTokens from "./Warden/Scanner/GetAllQrcodes";
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -532,6 +534,24 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <WShowStudentProfile />
+            </>
+          }
+        />
+        <Route
+          path="/wscanqrcode"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WQRScanner />
+            </>
+          }
+        />
+        <Route
+          path="/wgetAllQrTokens"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WGetAllQrTokens />
             </>
           }
         />

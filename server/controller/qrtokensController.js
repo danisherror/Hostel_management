@@ -15,6 +15,31 @@ exports.addqrtokens = BigPromise(async (req, res, next) => {
 });
 
 exports.getallqrtokens=BigPromise(async(req,res,next)=>{
+    const id=req.user._id;
+    const warden=await Warden.findById(id);
+    const hostelName=warden.hostelName;
+    const rooms=await Hostel.find({hostelName:hostelName});
+    const user_id=[];
+    for(let i=0;i<rooms.length;i++)
+    {
+        const op=rooms[i].studentIds;
+        for(let j=0;j<op.length;j++)
+        {
+            user_id.push(op[j]);
+        }
+    }
+        const result=[]
+        for(let i=0;i<user_id.length;i++)
+        {
+            const iid=user_id[i];
+            const result1=await Qrtokens.find({user:iid});
+            result.push(...result1)
+        }
+    res.status(200).json({
+        result
+    })
+})
+exports.wgetallqrtokens=BigPromise(async(req,res,next)=>{
 
     const result=await Qrtokens.find()
     res.status(200).json({
