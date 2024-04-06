@@ -1,6 +1,5 @@
 const Hostel = require('../models/hostel');
 const BigPromise = require('../middlewares/bigPromise');
-
 exports.applyhostel = BigPromise(async (req, res, next) => {
     // Extract necessary information from request body
     const { hostelName, block, roomNumber } = req.body;
@@ -35,3 +34,4 @@ exports.applyhostel = BigPromise(async (req, res, next) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+

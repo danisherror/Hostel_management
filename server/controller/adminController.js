@@ -253,3 +253,22 @@ exports.getsingleAnnouncement= BigPromise(async (req, res, next) => {
         result
     })
 })
+exports.updateAnnouncement = BigPromise(async(req, res) => {
+    try {
+        const id = req.params.id;
+        const user = await Announcement.findByIdAndUpdate(id, req.body, {
+            new: true
+        });
+        // console.log(user);
+
+        res.status(200).json({
+            message: 'Announcement updated successfully',
+            updatedAnnouncement: user
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            error: 'An error occurred while updating the announcement'
+        });
+    }
+});

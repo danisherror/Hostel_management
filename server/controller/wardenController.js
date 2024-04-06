@@ -2,7 +2,8 @@ const Warden=require('../models/warden')
 const BigPromise=require('../middlewares/bigPromise')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
-
+const Announcement =require("../models/announcement")
+const Hostel =require('../models/hostel');
 
 exports.signup=BigPromise(async(req,res,next)=>{
 
@@ -14,7 +15,6 @@ exports.signup=BigPromise(async(req,res,next)=>{
     const user1=await Warden.find({email:email})
     if(user1.length!=0)
     {
-        console.log("asdasd");
         return res.status(407).json({
         })
     }
@@ -33,7 +33,6 @@ exports.signup=BigPromise(async(req,res,next)=>{
         phone,
         hostelName
     })
-    console.log(user)
     //method to generte a cookie with the token generated with the expiry date ...........................
    res.status(200).json({
    })
@@ -42,7 +41,7 @@ exports.signup=BigPromise(async(req,res,next)=>{
 
 exports.signin=BigPromise(async (req,res)=>{
 
-    const {email,password,hostelName}=req.body
+    const {email,password}=req.body
 
     const user=await Warden.findOne({email:email}).select("+password")
     if(!user)
@@ -56,11 +55,6 @@ exports.signin=BigPromise(async (req,res)=>{
 
         return res.status(401).json({
             message:"Password does not match "
-        })
-    }
-    if(hostelName!=user.hostelName){
-        return res.status(401).json({
-            message:"Warden hostel does not match"
         })
     }
     const token=user.getJwtToken()
@@ -84,6 +78,14 @@ exports.showWardenDetailsByid=BigPromise(async (req,res)=>{
         user
     })
 });
+exports.showWardenDetailsByToken=BigPromise(async (req,res)=>{
+    const id=req.user._id
+    const result=await Warden.findById(id);
+    res.status(200).json({
+        result
+    })
+});
+
 
 exports.deleteWarden = BigPromise(async (req, res) => {
     try {
@@ -105,3 +107,23 @@ exports.deleteWarden = BigPromise(async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+exports.showwardenAnnouncements= BigPromise(async (req, res, next) => {
+    const id=req.user._id;
+    const warden=await Warden.findById(id);
+    const hostelName=warden.hostelName;
+    const result=await Announcement.find({hostelName:hostelName}).sort({ createdAt: -1 });
+    res.status(200).json({
+        result
+    })
+})
+
+exports.wgetHostelDetails=BigPromise(async(req,res,next)=>{
+    const id=req.user._id;
+    const warden=await Warden.findById(id);
+    const hostelName=warden.hostelName;
+    const result=await Hostel.find({hostelName:hostelName});
+    res.status(200).json({
+         result
+    })
+})

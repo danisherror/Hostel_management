@@ -1,5 +1,5 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import DefaultLayout from '../../layout/AdminLayout';
+import DefaultLayout from '../../layout/WardenLayout';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 const FormElements = () => {
@@ -9,7 +9,6 @@ const FormElements = () => {
     });
     const [url, setUrl] = useState("");
     const [image, setImage] = useState("");
-    const [hostelDetails, setHostelDetails] = useState([]);
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const id = localStorage.getItem('id');
@@ -43,13 +42,14 @@ const FormElements = () => {
                 announcement
             }),
         });
+        console.log("danish");
         const data = await response.json();
 
         if (response.status === 422 || !data) {
             alert("Error submitting announcement");
         } else {
             alert("Announcement submitted successfully");
-            navigate('/ahomepage');
+            navigate('/whomepage');
             // Optionally, you can handle success actions here
         }
     };
@@ -63,18 +63,7 @@ const FormElements = () => {
     };
     useEffect(() => {
         const getdata = async () => {
-            const res = await fetch(`http://localhost:8000/api/v1/getUniqueHostelNames/`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            });
 
-            const data = await res.json();
-            console.log(data.hostelName);
-            setHostelDetails(data.hostelName);
-
-            console.log("--------------------------------");
             const res1 = await fetch(`http://localhost:8000/api/v1/getsingleAnnouncement/${id}`, {
                 method: "GET",
                 headers: {
@@ -104,26 +93,6 @@ const FormElements = () => {
                 {/* <!-- Time and date --> */}
                 <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
                     <div className="flex flex-col gap-5.5 p-6.5">
-
-                        <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                            Hostel Name
-                        </label>
-                        <div className="relative">
-                            <select
-                                id="hostelName"
-                                name="hostelName"
-                                value={formData.hostelName}
-                                onChange={handlehostelNameChange}
-                                className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                            >
-                                <option>select the option below</option>
-                                {hostelDetails.map(hostel => (
-                                    <option key={hostel} value={hostel}>
-                                        {hostel}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Attach file

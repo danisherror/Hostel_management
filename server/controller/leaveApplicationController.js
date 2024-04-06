@@ -1,4 +1,6 @@
 const Leave =require("../models/leaveapplication")
+const Warden=require('../models/warden')
+const Hostel =require('../models/hostel');
 const BigPromise=require('../middlewares/bigPromise')
 
 exports.addleaveappliacation=BigPromise(async(req,res,next)=>{
@@ -52,6 +54,39 @@ exports.getallleaveapplication=BigPromise(async(req,res,next)=>{
             message:"No leave application found"
         })
     }
+    res.status(200).json({
+        result
+    })
+})
+exports.wgetallleaveapplication=BigPromise(async(req,res,next)=>{
+    const id=req.user._id;
+    const warden=await Warden.findById(id);
+    const hostelName=warden.hostelName;
+    const rooms=await Hostel.find({hostelName:hostelName});
+    const user_id=[];
+    for(let i=0;i<rooms.length;i++)
+    {
+        const op=rooms[i].studentIds;
+        for(let j=0;j<op.length;j++)
+        {
+            user_id.push(op[j]);
+        }
+    }
+    // console.log(user_id);
+    const result=[]
+        for(let i=0;i<user_id.length;i++)
+        {
+            const iid=user_id[i];
+            const result1=await Leave.find({user:iid});
+            result.push(...result1)
+        }
+    if(!result)
+    {
+        res.status(404).json({
+            message:"No leave application found"
+        })
+    }
+    // console.log(result);
     res.status(200).json({
         result
     })

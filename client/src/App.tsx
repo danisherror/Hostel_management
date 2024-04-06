@@ -41,6 +41,16 @@ import ShowAllWardenDetails from "./Admin/Warden/ShowWardens"
 import ShowWardenProfile from "./Admin/Warden/ShowSingleWarden";
 import DeleteWarden from "./Admin/Warden/DeleteWarden";
 //-----------------------------------------------------------------------------
+//warden
+import WardenDashboard from './pages/Dashboard/WardenDashBoard';
+import WcreateAnnouncement from "./Warden/Announcements/CreateAnnouncements";
+import ShowWardenAnnouncement from "./Warden/Announcements/ShowAnnouncemets";
+import WEditAnnouncement from "./Warden/Announcements/EditAnnouncements";
+import WShowFeedback from "./Warden/Feedback/ShowFeedback";
+import WRoomInfo from "./Warden/Hostel/RoomInfo";
+import WgetLeaveApplication from "./Warden/LeaveApplication/showLeaveApplication"
+import WEditstudentLeaveApplication from "./Warden/LeaveApplication/EditLeaveApplication";
+//-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
@@ -409,6 +419,79 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <DeleteWarden />
+            </>
+          }
+        />
+        <Route
+          path="/whomepage"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WardenDashboard />
+            </>
+          }
+        />
+
+        <Route
+          path="/wcreateAnnouncement"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WcreateAnnouncement />
+            </>
+          }
+        />
+        <Route
+          path="/wshowAnnouncement"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ShowWardenAnnouncement />
+            </>
+          }
+        />
+        <Route
+          path="/weditAnnouncement"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WEditAnnouncement />
+            </>
+          }
+        />
+        <Route
+          path="/wgetStudentFeedback"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WShowFeedback />
+            </>
+          }
+        />
+        <Route
+          path="/wgetHostelDetails"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WRoomInfo />
+            </>
+          }
+        />
+        <Route
+          path="/wgetLeaveApplication"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WgetLeaveApplication />
+            </>
+          }
+        />
+        <Route
+          path="/wchangeleaveApplicationStatus"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WEditstudentLeaveApplication />
             </>
           }
         />

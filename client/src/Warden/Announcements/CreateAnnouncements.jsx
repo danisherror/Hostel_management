@@ -1,5 +1,5 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import DefaultLayout from '../../layout/AdminLayout';
+import DefaultLayout from '../../layout/WardenLayout';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 const FormElements = () => {
@@ -9,38 +9,37 @@ const FormElements = () => {
     });
     const [url, setUrl] = useState("");
     const [image, setImage] = useState("");
-    const [hostelDetails, setHostelDetails] = useState([]);
+    const [hostelDetails, setHostelDetails] = useState("");
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
-    const id = localStorage.getItem('id');
     const submitFeedback = async (e) => {
         e.preventDefault();
-
         const formdata = new FormData()
         formdata.append("file", image)
         formdata.append("upload_preset", "testing")
         formdata.append("cloud_name", "dpywvy2za")
-        const res1 = await fetch('https://api.cloudinary.com/v1_1/dpywvy2za/image/upload', {
-            method: "post",
-            body: formdata
+        const res1=await fetch('https://api.cloudinary.com/v1_1/dpywvy2za/image/upload',{
+          method:"post",
+          body:formdata
         })
 
-        const ImgData = await res1.json()
-        const url1 = ImgData.url
+        const ImgData=await res1.json()
+        const url1=ImgData.url
         setUrl(url1);
         const { hostelName, announcement } = formData;
         console.log(hostelName)
         console.log(announcement)
         console.log(url1)
-        const response = await fetch(`http://localhost:8000/api/v1/updateAnnouncement/${id}`, {
-            method: "PATCH",
+        const response = await fetch(`http://localhost:8000/api/v1/createAnnouncement`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
-                hostelName,
-                url: url,
-                announcement
+               hostelName,
+               url:url1,
+               announcement
             }),
         });
         const data = await response.json();
@@ -49,13 +48,13 @@ const FormElements = () => {
             alert("Error submitting announcement");
         } else {
             alert("Announcement submitted successfully");
-            navigate('/ahomepage');
+            navigate('/whomepage');
             // Optionally, you can handle success actions here
         }
     };
     const handlehostelNameChange = (event) => {
         const selectedHostel = event.target.value;
-        setFormData((prevData) => ({ ...prevData, hostelName: selectedHostel }));
+        setFormData((prevData) => ({ ...prevData, hostelName: selectedHostel}));
     };
     const handleAnnouncementChange = (event) => {
         const announcementValue = event.target.value;
@@ -63,19 +62,7 @@ const FormElements = () => {
     };
     useEffect(() => {
         const getdata = async () => {
-            const res = await fetch(`http://localhost:8000/api/v1/getUniqueHostelNames/`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            });
-
-            const data = await res.json();
-            console.log(data.hostelName);
-            setHostelDetails(data.hostelName);
-
-            console.log("--------------------------------");
-            const res1 = await fetch(`http://localhost:8000/api/v1/getsingleAnnouncement/${id}`, {
+            const res = await fetch(`http://localhost:8000/api/v1/showWardenDetailsByToken`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -83,16 +70,12 @@ const FormElements = () => {
                 }
             });
 
-            const data1 = await res1.json();
-            setFormData((prevData) => ({ ...prevData, hostelName: data1.result.hostelName }));
-            setFormData((prevData) => ({ ...prevData, announcement: data1.result.announcement }));
-            setUrl(data1.result.url)
-
-
+            const data = await res.json();
+            setFormData((prevData) => ({ ...prevData, hostelName: data.result.hostelName}));
         }
 
         getdata();
-    }, []);
+    }, [token]);
 
     return (
         <DefaultLayout>
@@ -105,25 +88,6 @@ const FormElements = () => {
                 <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
                     <div className="flex flex-col gap-5.5 p-6.5">
 
-                        <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                            Hostel Name
-                        </label>
-                        <div className="relative">
-                            <select
-                                id="hostelName"
-                                name="hostelName"
-                                value={formData.hostelName}
-                                onChange={handlehostelNameChange}
-                                className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                            >
-                                <option>select the option below</option>
-                                {hostelDetails.map(hostel => (
-                                    <option key={hostel} value={hostel}>
-                                        {hostel}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Attach file

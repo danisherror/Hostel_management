@@ -4,7 +4,7 @@ const jwt=require('jsonwebtoken')
 
 //this middleware is to check whether the user is sign in or not and to inject information as req.user ..........
 
-exports.aisLoggedIn=BigPromise(async (req,res,next)=>{
+exports.wisLoggedIn=BigPromise(async (req,res,next)=>{
 
 
     const token= req.header('Authorization').replace('Bearer ','')

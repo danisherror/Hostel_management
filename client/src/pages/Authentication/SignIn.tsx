@@ -54,6 +54,21 @@ const SignIn: React.FC = () => {
           alert("Signin failed. Please check your credentials.");
         }
       }
+      else if (type === "warden") {
+        const response = await axios.post('http://localhost:8000/api/v1/wsignin', {
+          email,
+          password,
+        })
+        if (response.status === 200) {
+          storeTokenInLS(response.data.token);
+          alert("Signin successful!");
+          console.log("data added");
+          history(`/whomepage`);
+        } else {
+          console.error("-Error:", response.statusText);
+          alert("Signin failed. Please check your credentials.");
+        }
+      }
       else {
         const response = await axios.post('http://localhost:8000/api/v1/asignin', {
           email,
@@ -309,6 +324,7 @@ const SignIn: React.FC = () => {
                     <select id="type" name="type" value={inpval.type} onChange={handleUserTypeChange} className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary">
                       <option value="student">Student</option>
                       <option value="admin">Admin</option>
+                      <option value="warden">Warden</option>
 
                     </select>
                   </div>
