@@ -127,3 +127,12 @@ exports.wgetHostelDetails=BigPromise(async(req,res,next)=>{
          result
     })
 })
+exports.wardenprofile=BigPromise(async(req,res)=>{
+
+    const id=req.user._id
+    const user=await Warden.findById(id);
+
+    res.status(200).json({
+        user
+    })
+})

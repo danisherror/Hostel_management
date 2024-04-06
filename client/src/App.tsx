@@ -56,6 +56,7 @@ import WGetStudentProfile from "./Warden/Student/GetStudentProfiles";
 import WShowStudentProfile from "./Warden/Student/ShowStudentProfile"
 import WQRScanner from "./Warden/Scanner/Scanner";
 import WGetAllQrTokens from "./Warden/Scanner/GetAllQrcodes";
+import WProfile from "./Warden/Profile/Profile";
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -552,6 +553,15 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <WGetAllQrTokens />
+            </>
+          }
+        />
+        <Route
+          path="/wprofile"
+          element={
+            <>
+              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WProfile />
             </>
           }
         />
