@@ -36,6 +36,10 @@ import GetAllQrTokens from "./Admin/Scanner/GetAllQrcodes";
 import CreateAnnouncements from "./Admin/Announcment/CreateAnnouncements";
 import ShowAllAnouncements from "./Admin/Announcment/ShowAnnouncemets";
 import EditAnnouncement from "./Admin/Announcment/EditAnnouncements";
+import CreateWarden from "./Admin/Warden/CreateWarden";
+import ShowAllWardenDetails from "./Admin/Warden/ShowWardens"
+import ShowWardenProfile from "./Admin/Warden/ShowSingleWarden";
+import DeleteWarden from "./Admin/Warden/DeleteWarden";
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -369,6 +373,42 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <EditAnnouncement />
+            </>
+          }
+        />
+        <Route
+          path="/createWarden"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <CreateWarden />
+            </>
+          }
+        />
+        <Route
+          path="/showAllWardenDetails"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ShowAllWardenDetails />
+            </>
+          }
+        />
+        <Route
+          path="/showWardenProfile"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <ShowWardenProfile />
+            </>
+          }
+        />
+        <Route
+          path="/deleteWarden"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <DeleteWarden />
             </>
           }
         />
