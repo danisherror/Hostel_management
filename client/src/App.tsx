@@ -50,6 +50,8 @@ import WShowFeedback from "./Warden/Feedback/ShowFeedback";
 import WRoomInfo from "./Warden/Hostel/RoomInfo";
 import WgetLeaveApplication from "./Warden/LeaveApplication/showLeaveApplication"
 import WEditstudentLeaveApplication from "./Warden/LeaveApplication/EditLeaveApplication";
+import WGetStudentRoomIsses from "./Warden/RoomComplaint/ShowRoomComplaints";
+
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -492,6 +494,15 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <WEditstudentLeaveApplication />
+            </>
+          }
+        />
+        <Route
+          path="/wgetstudentroomissues"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WGetStudentRoomIsses />
             </>
           }
         />
