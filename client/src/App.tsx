@@ -51,7 +51,9 @@ import WRoomInfo from "./Warden/Hostel/RoomInfo";
 import WgetLeaveApplication from "./Warden/LeaveApplication/showLeaveApplication"
 import WEditstudentLeaveApplication from "./Warden/LeaveApplication/EditLeaveApplication";
 import WGetStudentRoomIsses from "./Warden/RoomComplaint/ShowRoomComplaints";
-
+import WChangeRoomIssueStatus from "./Warden/RoomComplaint/EditRoomCOmplaints";
+import WGetStudentProfile from "./Warden/Student/GetStudentProfiles";
+import WShowStudentProfile from "./Warden/Student/ShowStudentProfile"
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -503,6 +505,33 @@ function App() {
             <>
               <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <WGetStudentRoomIsses />
+            </>
+          }
+        />
+        <Route
+          path="/wchangerooomissueStatus"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WChangeRoomIssueStatus />
+            </>
+          }
+        />
+        <Route
+          path="/wgetallStudents"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WGetStudentProfile />
+            </>
+          }
+        />
+        <Route
+          path="/wShowStudentProfile"
+          element={
+            <>
+              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <WShowStudentProfile />
             </>
           }
         />

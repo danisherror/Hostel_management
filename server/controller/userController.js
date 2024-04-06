@@ -3,7 +3,7 @@ const BigPromise=require('../middlewares/bigPromise')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const Hostel=require('../models/hostel')
-
+const Warden=require('../models/warden')
 
 exports.signup=BigPromise(async(req,res,next)=>{
 
@@ -157,6 +157,34 @@ exports.getStudentprofiles=BigPromise(async(req,res)=>{
     const id=req.user._id
     const user= (await User.find()).reverse()
 
+    res.status(200).json({
+        user
+    })
+})
+exports.wgetStudentprofiles=BigPromise(async(req,res)=>{
+
+    const id=req.user._id;
+    const warden=await Warden.findById(id);
+    const hostelName=warden.hostelName;
+    const rooms=await Hostel.find({hostelName:hostelName});
+    const user_id=[];
+    for(let i=0;i<rooms.length;i++)
+    {
+        const op=rooms[i].studentIds;
+        for(let j=0;j<op.length;j++)
+        {
+            user_id.push(op[j]);
+        }
+    }
+    // console.log(user_id);
+    const user=[]
+    // console.log(user_id);
+        for(let i=0;i<user_id.length;i++)
+        {
+            const iid=user_id[i];
+            const result1=await User.find({_id:iid});
+            user.push(...result1)
+        }
     res.status(200).json({
         user
     })

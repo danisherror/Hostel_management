@@ -1,5 +1,5 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import DefaultLayout from '../../layout/AdminLayout';
+import DefaultLayout from '../../layout/WardenLayout';
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 const FormElements = () => {
@@ -70,7 +70,7 @@ const FormElements = () => {
         } else {
             console.log("Complaint submitted successfully:", data);
             alert("Complaint submitted successfully")
-            navigate('/ahomepage');
+            navigate('/whomepage');
         }
         // alert("asdasdasd")
         // navigate('/ahomepage');
