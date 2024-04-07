@@ -10,146 +10,203 @@ const Profile = () => {
   const [roomissues, setRoomIssues] = useState([]);
   const [uniqueDate, setuniqueDate] = useState([]);
   const [getuserdata, setStudentDetail] = useState({});
-  const [getHostel,setHostel] = useState([{
-    hostelName:"None",block:"None",roomNumber:"None"}]);
+  const [uniqueDate1, setuniqueDate1] = useState([]);
+  const convertTo24HourFormat = (timeStr) => {
+    const [time, period] = timeStr.split(" ");
+    let [hours, minutes] = time.split(":");
+    hours = parseInt(hours);
+    minutes = parseInt(minutes);
+
+    if (period === "PM" && hours < 12) {
+      hours += 12;
+    } else if (period === "AM" && hours === 12) {
+      hours = 0;
+    }
+
+    return hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
+  };
+  const [getHostel, setHostel] = useState([{
+    hostelName: "None", block: "None", roomNumber: "None"
+  }]);
   console.log("dsdsds ", getuserdata);
   const getToken = () => {
-      return localStorage.getItem('token');
+    return localStorage.getItem('token');
   }
   const token = getToken();
 
   console.log(token)
   const state = {
     series: [
-        {
-            name: 'Count',
-            data: uniqueDate.map(item => item.count),
-        }
+      {
+        name: 'Count',
+        data: uniqueDate.map(item => item.count),
+      }
     ]
-};
-const options = {
+  };
+  const state1 = {
+    series: [
+      {
+        name: 'Count',
+        data: uniqueDate1.map(item => item.count),
+      }
+    ]
+  };
+  const options = {
     colors: ['#3C50E0'],
     chart: {
-        fontFamily: 'Satoshi, sans-serif',
-        type: 'line',
-        height: 335,
-        toolbar: {
-            show: false,
-        },
-        zoom: {
-            enabled: false,
-        },
+      fontFamily: 'Satoshi, sans-serif',
+      type: 'line',
+      height: 335,
+      toolbar: {
+        show: false,
+      },
+      zoom: {
+        enabled: false,
+      },
     },
     dataLabels: {
-        enabled: false,
+      enabled: false,
     },
     xaxis: {
-        categories: uniqueDate.map(item => item.date),
+      categories: uniqueDate.map(item => item.date),
     },
     markers: {
-        size: 6,
-        strokeWidth: 0,
-        hover: {
-            size: 8
-        }
+      size: 6,
+      strokeWidth: 0,
+      hover: {
+        size: 8
+      }
     },
     legend: {
-        show: false
+      show: false
     },
     tooltip: {
-        theme: 'dark'
+      theme: 'dark'
     }
-};
+  };
+  const options1 = {
+    colors: ['#3C50E0'],
+    chart: {
+      fontFamily: 'Satoshi, sans-serif',
+      type: 'line',
+      height: 335,
+      toolbar: {
+        show: false,
+      },
+      zoom: {
+        enabled: false,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    xaxis: {
+      categories: uniqueDate1.map(item => item.date),
+    },
+    markers: {
+      size: 6,
+      strokeWidth: 0,
+      hover: {
+        size: 8
+      }
+    },
+    legend: {
+      show: false
+    },
+    tooltip: {
+      theme: 'dark'
+    }
+  };
   const [qrCodeText, setQRCodeText] = useState('');
   const getdata = async () => {
-      const res = await fetch(`http://localhost:8000/api/v1/studentProfile`, {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`
-          }
-      });
-
-      const data = await res.json();
-      console.log(data);
-      if (res.status === 404) {
-          alert("404 Error: Resource not found");
-          // Handle the error appropriately, e.g., display an error message to the user
+    const res = await fetch(`http://localhost:8000/api/v1/studentProfile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       }
+    });
 
-      if (res.status === 422 || !data) {
-          console.log("error ");
+    const data = await res.json();
+    console.log(data);
+    if (res.status === 404) {
+      alert("404 Error: Resource not found");
+      // Handle the error appropriately, e.g., display an error message to the user
+    }
 
-      } else {
-          setStudentDetail(data.user)
-          setQRCodeText(data.user._id)
-          console.log("get data");
+    if (res.status === 422 || !data) {
+      console.log("error ");
+
+    } else {
+      setStudentDetail(data.user)
+      setQRCodeText(data.user._id)
+      console.log("get data");
+    }
+
+
+    console.log("----------------------------------------------------");
+
+
+
+    const res1 = await fetch(`http://localhost:8000/api/v1/getsingleqrtoken`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       }
-
-
-      console.log("----------------------------------------------------");
-
-
-
-      const res1 = await fetch(`http://localhost:8000/api/v1/getsingleqrtoken`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        }
     });
 
 
     const data1 = await res1.json();
     if (res1.status === 404) {
-        console.error("404 Error: Resource not found");
-        // Handle the error appropriately, e.g., display an error message to the user
+      console.error("404 Error: Resource not found");
+      // Handle the error appropriately, e.g., display an error message to the user
     }
 
     if (res1.status === 422 || !data1) {
-        console.log("error ");
+      console.log("error ");
 
     } else {
-        setRoomIssues(data.result)
-        console.log(roomissues)
-        const dateCounts = {};
-        data1.result.forEach(entry => {
-            const date = entry.date;
-            if (dateCounts[date]) {
-                dateCounts[date]++;
-            } else {
-                dateCounts[date] = 1;
-            }
-        });
-        const uniqueDatesArray = Object.keys(dateCounts).map(date => ({ date, count: dateCounts[date] }));
+      setRoomIssues(data.result)
+      console.log(roomissues)
+      const dateCounts = {};
+      data1.result.forEach(entry => {
+        const date = entry.date;
+        if (dateCounts[date]) {
+          dateCounts[date]++;
+        } else {
+          dateCounts[date] = 1;
+        }
+      });
+      const uniqueDatesArray = Object.keys(dateCounts).map(date => ({ date, count: dateCounts[date] }));
 
-        setuniqueDate(uniqueDatesArray);
-        console.log(uniqueDatesArray);
-        console.log("get data");
+      setuniqueDate(uniqueDatesArray);
+      console.log(uniqueDatesArray);
+      console.log("get data");
     }
 
     console.log("----------------------------------------------------");
-    const id=data.user._id
+    const id = data.user._id
     console.log(id)
     console.log(typeof id === "string")
     const res2 = await fetch(`http://localhost:8000/api/v1/getStudentHostel/${id}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
 
-        }
+      }
     });
     const data2 = await res2.json();
-    if(data2.result.length ===1)
-    {
+    if (data2.result.length === 1) {
       console.log(1)
       setHostel(data2.result);
     }
-    else
-    {console.log(2)
-      const ans1=[{
-        hostelName:"None",block:"None",roomNumber:"None"},]
-        setHostel(ans1);
+    else {
+      console.log(2)
+      const ans1 = [{
+        hostelName: "None", block: "None", roomNumber: "None"
+      },]
+      setHostel(ans1);
     }
     console.log(data2)
   }
@@ -165,8 +222,52 @@ const options = {
   //     aEl.click();
   //     document.body.removeChild(aEl);
   // }
+  const getdata1 = async () => {
+
+    const res = await fetch(`http://localhost:8000/api/v1/getsingleqrtoken`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const data = await res.json();
+    console.log("asd" + data.result);
+    if (res.status === 404) {
+      console.error("404 Error: Resource not found");
+      // Handle the error appropriately, e.g., display an error message to the user
+    }
+
+    if (res.status === 422 || !data) {
+      console.log("error ");
+
+    } else {
+      console.log(roomissues)
+      const dateCounts = {};
+      data.result.forEach(entry => {
+        const timm = entry.time;
+        const firstFourChars = timm.slice(0, 4); // Get characters from index 0 to 3
+        const lastTwoChars = timm.slice(-2); // Get last 2 characters
+        const date = firstFourChars + " " + lastTwoChars;
+        if (dateCounts[date]) {
+          dateCounts[date]++;
+        } else {
+          dateCounts[date] = 1;
+        }
+      });
+      const uniqueDatesArray = Object.keys(dateCounts).map(date => ({ date, count: dateCounts[date] }));
+      uniqueDatesArray.sort((a, b) => {
+        const timeA = convertTo24HourFormat(a.date);
+        const timeB = convertTo24HourFormat(b.date);
+        return timeA.localeCompare(timeB);
+      });
+      setuniqueDate1(uniqueDatesArray);
+    }
+  }
   useEffect(() => {
-      getdata();
+    getdata();
+    getdata1();
   }, [])
 
   return (
@@ -189,75 +290,87 @@ const options = {
           </div>
           <div className="mt-4">
             <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
-            {getuserdata.name}
+              {getuserdata.name}
             </h3>
             {/* <p className="font-medium">Ui/Ux Designer</p> */}
             <div className="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-1 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">Student ID</span>
                 <span className="font-semibold text-black dark:text-white">
-                {getuserdata.collegeid}
+                  {getuserdata.collegeid}
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">Semester</span>
                 <span className="font-semibold text-black dark:text-white">
-                {getuserdata.semester}
+                  {getuserdata.semester}
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">email</span>
                 <span className="font-semibold text-black dark:text-white">
-                {getuserdata.email}
+                  {getuserdata.email}
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">Phone No</span>
                 <span className="font-semibold text-black dark:text-white">
-                {getuserdata.phone}
+                  {getuserdata.phone}
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">Hostel Name</span>
                 <span className="font-semibold text-black dark:text-white">
-                {getHostel[0].hostelName}
+                  {getHostel[0].hostelName}
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">Block</span>
                 <span className="font-semibold text-black dark:text-white">
-                {getHostel[0].block}
+                  {getHostel[0].block}
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">Room No</span>
                 <span className="font-semibold text-black dark:text-white">
-                {getHostel[0].roomNumber}
+                  {getHostel[0].roomNumber}
                 </span>
               </div>
 
             </div>
             <div className="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-1 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
 
-            <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
+              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                 <span className="text-sm">Token</span>
                 <span className="font-semibold text-black dark:text-white">
-                <QRCode  id="qrCodeEl" size={150} value={qrCodeText} renderAs="canvas" />
+                  <QRCode id="qrCodeEl" size={150} value={qrCodeText} renderAs="canvas" />
                 </span>
               </div>
-              </div>
-              <br></br>
-              <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
-                            No of logins per day
-                        </h3>
-                        <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-                            <ReactApexChart
-                                options={options}
-                                series={state.series}
-                                type="line"
-                                height={350}
-                            />
-                        </div>
+            </div>
+            <br></br>
+            <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
+              No of logins per day
+            </h3>
+            <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+              <ReactApexChart
+                options={options}
+                series={state.series}
+                type="line"
+                height={350}
+              />
+            </div>
+            <br></br>
+            <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
+              No of logins per time
+            </h3>
+            <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+              <ReactApexChart
+                options={options1}
+                series={state1.series}
+                type="line"
+                height={350}
+              />
+            </div>
 
 
 
