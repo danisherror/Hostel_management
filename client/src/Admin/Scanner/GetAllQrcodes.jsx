@@ -351,27 +351,28 @@ const TableOne = () => {
     return (
 
 
-        <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">                <div className="flex justify-end gap-4.5 mb-2.5">
-            <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
-                No of Qrcode Scanned per day
-            </h4>
-            <label
-                className="mb-3 block text-sm font-medium text-black dark:text-white"
-                htmlFor="fullName"
-            >
-                Filter by Hostel Name:
-            </label>
-            <div className="relative">
-                <select value={selectedData} onChange={handleDropdownChange}
-                    className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+        <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
+            <div className="flex justify-end gap-4.5 mb-2.5">
+                <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
+                    No of Qrcode Scanned per day
+                </h4>
+                <label
+                    className="mb-3 block text-sm font-medium text-black dark:text-white"
+                    htmlFor="fullName"
                 >
-                    {hostelNames.map((hostel, index) => (
-                        <option key={index} value={hostel}>{hostel}</option>
-                    ))}
-                </select>
+                    Filter by Hostel Name:
+                </label>
+                <div className="relative">
+                    <select value={selectedData} onChange={handleDropdownChange}
+                        className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                    >
+                        {hostelNames.map((hostel, index) => (
+                            <option key={index} value={hostel}>{hostel}</option>
+                        ))}
+                    </select>
 
+                </div>
             </div>
-        </div>
             <ReactApexChart
                 options={options}
                 series={state.series}

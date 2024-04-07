@@ -15,6 +15,20 @@ const TableOne = () => {
             }
         ]
     };
+    const convertTo24HourFormat = (timeStr) => {
+        const [time, period] = timeStr.split(" ");
+        let [hours, minutes] = time.split(":");
+        hours = parseInt(hours);
+        minutes = parseInt(minutes);
+
+        if (period === "PM" && hours < 12) {
+          hours += 12;
+        } else if (period === "AM" && hours === 12) {
+          hours = 0;
+        }
+
+        return hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
+    };
     const options = {
         colors: ['#3C50E0'],
         chart: {
@@ -80,7 +94,10 @@ const TableOne = () => {
             console.log(roomissues)
             const dateCounts = {};
             data.result.forEach(entry => {
-                const date = entry.date;
+                const timm = entry.time;
+                const firstFourChars = timm.slice(0, 4); // Get characters from index 0 to 3
+                const lastTwoChars = timm.slice(-2); // Get last 2 characters
+                const date =firstFourChars+" "+lastTwoChars;
                 if (dateCounts[date]) {
                     dateCounts[date]++;
                 } else {
@@ -88,10 +105,12 @@ const TableOne = () => {
                 }
             });
             const uniqueDatesArray = Object.keys(dateCounts).map(date => ({ date, count: dateCounts[date] }));
-
+            uniqueDatesArray.sort((a, b) => {
+                const timeA = convertTo24HourFormat(a.date);
+                const timeB = convertTo24HourFormat(b.date);
+                return timeA.localeCompare(timeB);
+            });
             setuniqueDate(uniqueDatesArray);
-            console.log(uniqueDatesArray);
-            console.log("get data");
         }
     }
 
@@ -103,7 +122,7 @@ const TableOne = () => {
         <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
             <div className="flex justify-end gap-4.5 mb-7.5">
                 <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
-                    No of Qrcode Scanned per day
+                    No of Qrcode Scanned per Time
                 </h4>
             </div>
             <ReactApexChart
