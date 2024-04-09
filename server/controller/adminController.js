@@ -174,6 +174,22 @@ exports.deleteHostel = BigPromise(async (req, res) => {
     }
 });
 
+exports.deleteAnnouncement = BigPromise(async (req, res) => {
+    try {
+        const id=req.params.id;
+
+        // Check if hostel exists
+        const result = await Announcement.findByIdAndDelete(id);
+        if (!result) {
+            return res.status(400).json({ error: 'Announcement does not exist.' });
+        }
+        // console.log(`Hostel '${hostelName}' deleted successfully.`);
+        res.status(200).json({ message: `Announcement deleted successfully.` });
+    } catch (error) {
+        console.error('Error deleting Announcement:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 exports.getStudentHostel = BigPromise(async (req, res, next) => {
     const user = req.params.id;

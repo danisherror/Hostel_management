@@ -3,7 +3,7 @@ import DefaultLayout from '../../layout/WardenLayout';
 import React, { useEffect, useState } from 'react'
 import { useID } from '../../Auth/Auth';
 import { NavLink } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 const TableOne = () => {
     const storeIdInLs = useID();
     const [roomissues, setRoomIssues] = useState([]);
@@ -11,7 +11,7 @@ const TableOne = () => {
         return localStorage.getItem('token');
     }
     const token = getToken();
-
+    const navigate = useNavigate();
     const getdata = async () => {
 
         const res = await fetch(`http://localhost:8000/api/v1/showwardenAnnouncements`, {
@@ -34,6 +34,33 @@ const TableOne = () => {
         } else {
             setRoomIssues(data.result)
         }
+    }
+    const deleteHostel = async (id) => {
+        const confirmation = window.confirm("Are you sure you want to delete this announcement?");
+    if (confirmation) {
+
+        const res = await fetch(`http://localhost:8000/api/v1/wdeleteAnnouncement/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const data = await res.json();
+        if (res.status === 404) {
+            console.error("404 Error: Resource not found");
+            // Handle the error appropriately, e.g., display an error message to the user
+        }
+
+        if (res.status === 422 || !data) {
+            console.log("error ");
+
+        } else {
+            alert("Announcement deleted successfully")
+            navigate('/whomepage');
+        }
+    }
     }
 
     useEffect(() => {
@@ -60,6 +87,9 @@ const TableOne = () => {
                                 </th>
                                 <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                                     Edit
+                                </th>
+                                <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                                    Delete
                                 </th>
                             </tr>
                         </thead>
@@ -91,6 +121,12 @@ const TableOne = () => {
                                             <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                                                 onClick={() => storeIdInLs(issuesEntry._id)} >
                                                 edit</button></NavLink>
+                                    </td>
+                                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+
+                                            <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
+                                                onClick={() => deleteHostel(issuesEntry._id)} >
+                                                Delete</button>
                                     </td>
                                 </tr>
                             ))}
