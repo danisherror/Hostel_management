@@ -58,6 +58,13 @@ import WQRScanner from "./Warden/Scanner/Scanner";
 import WGetAllQrTokens from "./Warden/Scanner/GetAllQrcodes";
 import WProfile from "./Warden/Profile/Profile";
 //-----------------------------------------------------------------------------
+//Homepage
+import HomePage from "./pages/Dashboard/HomePage"
+import HostelRules from "./HomePage/HostelRules/HostelRules"
+import Contact from './HomePage/Contact/Contact_info';
+import Guidelines from "./HomePage/Guidelines/Guidelines";
+import Mess from "./HomePage/Mess/Mess"
+//-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
@@ -95,7 +102,7 @@ function App() {
           element={
             <>
               <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Landing />
+              <HomePage />
             </>
           }
         />
@@ -562,6 +569,42 @@ function App() {
             <>
               <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <WProfile />
+            </>
+          }
+        />
+        <Route
+          path="/hostelrules"
+          element={
+            <>
+              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <HostelRules />
+            </>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <>
+              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <Contact />
+            </>
+          }
+        />
+        <Route
+          path="/guidelines"
+          element={
+            <>
+              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <Guidelines />
+            </>
+          }
+        />
+        <Route
+          path="/mess"
+          element={
+            <>
+              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <Mess />
             </>
           }
         />
