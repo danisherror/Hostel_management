@@ -18,7 +18,6 @@ const Settings = () => {
   })
 
   const setdata = (e) => {
-      console.log(e.target.value);
       const { name, value } = e.target;
       setINP((preval) => {
           return {
@@ -32,10 +31,8 @@ const Settings = () => {
         return localStorage.getItem('token');
     }
     const token = getToken();
-    console.log(token);
 
 
-    console.log(url)
     const updateProfilePic = async(e)=>{
         e.preventDefault();
         const formdata = new FormData()
@@ -50,7 +47,6 @@ const Settings = () => {
         const ImgData=await res1.json()
         const url1=ImgData.url
         setUrl(url1);
-        console.log(url1)
         //const pus=url1.toString()
         console.log("asdasjbaskjbkjasbfakjs")
         const res2 = await fetch(`http://localhost:8000/api/v1/editImage`,{
@@ -63,10 +59,8 @@ const Settings = () => {
                url:url1
             })
         });
-        console.log("asdjankajs: "+res2.status)
 
         const data2 = await res2.json();
-        console.log("asdsd",data2.user,url1);
 
         if(res2.status === 404 || !data2){
             alert("fill the data");
@@ -86,7 +80,6 @@ const Settings = () => {
       });
 
       const data = await res.json();
-      console.log(data);
 
       if (res.status === 422 || !data) {
           console.log("error ");
@@ -118,7 +111,6 @@ const Settings = () => {
     });
 
     const data2 = await res2.json();
-    console.log("asdsd", data2.user);
 
     if (res2.status === 422 || !data2) {
         alert("fill the data");

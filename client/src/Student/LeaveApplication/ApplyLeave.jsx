@@ -28,7 +28,6 @@ const FormElements = () => {
             return;
         }
         const token = localStorage.getItem('token');
-        console.log(startDate, endDate, reason)
         const response = await fetch(`http://localhost:8000/api/v1/addleaveappliacation`, {
             method: "POST",
             headers: {

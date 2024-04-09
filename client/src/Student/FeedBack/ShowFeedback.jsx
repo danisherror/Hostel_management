@@ -12,7 +12,6 @@ const TableOne = () => {
   }
   const token = getToken();
 
-  console.log(token)
   const getdata = async () => {
 
     const res = await fetch(`http://localhost:8000/api/v1/getfeedback`, {
@@ -24,7 +23,6 @@ const TableOne = () => {
     });
 
     const data = await res.json();
-    console.log(data);
     if (res.status === 404) {
       console.error("404 Error: Resource not found");
       // Handle the error appropriately, e.g., display an error message to the user
@@ -35,8 +33,6 @@ const TableOne = () => {
 
     } else {
       setfeedback(data.result)
-      console.log(feedback)
-      console.log("get data");
     }
   }
 

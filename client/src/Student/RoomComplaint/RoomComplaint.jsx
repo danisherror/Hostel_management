@@ -8,8 +8,6 @@ const FormElements = () => {
     const navigate = useNavigate();
     const submitFeedback = async () => {
         const token = localStorage.getItem('token');
-        console.log(review)
-        console.log(title)
         const response = await fetch(`http://localhost:8000/api/v1/addcomplain`, {
             method: "POST",
             headers: {

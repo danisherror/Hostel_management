@@ -30,7 +30,6 @@ const FormElements = () => {
             return;
         }
         const token = localStorage.getItem('token');
-        console.log(startDate,endDate,reason)
         const response = await fetch(`http://localhost:8000/api/v1/updateleaveappliacation/${id}`, {
             method: "PATCH",
             headers: {
@@ -64,7 +63,6 @@ const FormElements = () => {
         });
 
         const data = await res.json();
-        console.log(data);
 
         if (res.status === 422 || !data) {
             console.log("error ");
@@ -74,7 +72,6 @@ const FormElements = () => {
             setStartDate(data.result.startDate);
             setEndDate(data.result.endDate);
             setReason(data.result.reason);
-            console.log("get data");
 
         }
     }

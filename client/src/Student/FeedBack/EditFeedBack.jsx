@@ -27,9 +27,6 @@ const FormElements = () => {
     };
     const id=localStorage.getItem("id")
   const submitFeedback = async () => {
-
-    console.log(value)
-    console.log(review)
     const response = await fetch(`http://localhost:8000/api/v1/updatefeedback/${id}`, {
       method: "PUT",
       headers: {
@@ -40,16 +37,7 @@ const FormElements = () => {
         review: review,
       }),
     });
-  //   const res = await fetch(`/api/v1/getfeedback`, {
-  //     method: "GET",
-  //     headers: {
-  //         "Content-Type": "application/json",
-  //         "Authorization": `Bearer ${token}`
-  //     }
-  // });
-    console.log("-------------------\n-----------------\n")
     const data = await response.json();
-    console.log(data)
     if (response.status === 422 || !data) {
       console.log("Error submitting feedback");
     } else {
@@ -68,7 +56,6 @@ const FormElements = () => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (res.status === 422 || !data) {
         console.log("error ");
@@ -76,11 +63,7 @@ const FormElements = () => {
     } else {
         // setINP(data.user)
         setValue(data.result.rating)
-        console.log(value);
         setReview(data.result.review)
-        console.log(review);
-        console.log("get data");
-
     }
 }
 

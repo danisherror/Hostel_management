@@ -8,7 +8,6 @@ const FormElements = () => {
     const navigate = useNavigate();
     const id=localStorage.getItem("id")
     const submitFeedback = async () => {
-        console.log(review)
         const response = await fetch(`http://localhost:8000/api/v1/updatecomplaint/${id}`, {
             method: "PUT",
             headers: {
@@ -40,7 +39,6 @@ const FormElements = () => {
         });
 
         const data = await res.json();
-        console.log(data);
 
         if (res.status === 422 || !data) {
             console.log("error ");
@@ -49,8 +47,6 @@ const FormElements = () => {
             // setINP(data.user)
             setTitle(data.result.title)
             setReview(data.result.description)
-            console.log(review);
-            console.log("get data");
 
         }
     }

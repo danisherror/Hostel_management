@@ -16,7 +16,6 @@ const Profile = () => {
   }
   const token = getToken();
 
-  console.log(token)
 
   const [qrCodeText, setQRCodeText] = useState('');
   const getdata = async () => {
@@ -29,7 +28,6 @@ const Profile = () => {
     });
 
     const data = await res.json();
-    console.log(data);
     if (res.status === 404) {
       alert("404 Error: Resource not found");
       // Handle the error appropriately, e.g., display an error message to the user
@@ -41,14 +39,10 @@ const Profile = () => {
     } else {
       setStudentDetail(data.user)
       setQRCodeText(data.user._id)
-      console.log("get data");
     }
 
 
-    console.log("----------------------------------------------------");
     const id = data.user._id
-    console.log(id)
-    console.log(typeof id === "string")
     const res2 = await fetch(`http://localhost:8000/api/v1/getStudentHostel/${id}`, {
       method: "GET",
       headers: {
@@ -58,30 +52,15 @@ const Profile = () => {
     });
     const data2 = await res2.json();
     if (data2.result.length === 1) {
-      console.log(1)
       setHostel(data2.result);
     }
     else {
-      console.log(2)
       const ans1 = [{
         hostelName: "None", block: "None", roomNumber: "None"
       },]
       setHostel(ans1);
     }
-    console.log(data2)
   }
-  // const downloadQRCode = () => {
-  //     const qrCodeURL = document.getElementById('qrCodeEl')
-  //         .toDataURL("image/png")
-  //         .replace("image/png", "image/octet-stream");
-  //     console.log(qrCodeURL)
-  //     let aEl = document.createElement("a");
-  //     aEl.href = qrCodeURL;
-  //     aEl.download = "QR_Code.png";
-  //     document.body.appendChild(aEl);
-  //     aEl.click();
-  //     document.body.removeChild(aEl);
-  // }
   useEffect(() => {
     getdata();
   }, [])

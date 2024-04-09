@@ -27,8 +27,6 @@ const FormElements = () => {
     };
     const submitFeedback = async () => {
         const token = localStorage.getItem('token');
-        console.log(value)
-        console.log(review)
         const response = await fetch(`http://localhost:8000/api/v1/addfeedback`, {
             method: "POST",
             headers: {
@@ -40,13 +38,6 @@ const FormElements = () => {
                 review: review,
             }),
         });
-        //   const res = await fetch(`/api/v1/getfeedback`, {
-        //     method: "GET",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Authorization": `Bearer ${token}`
-        //     }
-        // });
 
         const data = await response.json();
 

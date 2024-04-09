@@ -15,7 +15,6 @@ const FormElements = () => {
         return localStorage.getItem('token');
     }
     const token = getToken();
-    console.log(token);
 
     const handleBlockChange = (event) => {
         const selectedBlock = event.target.value;
@@ -27,7 +26,6 @@ const FormElements = () => {
         if (hostel) {
             const blockIndex = hostel.blockName.indexOf(selectedBlock);
             const roomnoo=hostel.roomNumber[blockIndex];
-            console.log(roomnoo);
             setListroom(roomnoo)
         }
 
@@ -43,7 +41,6 @@ const FormElements = () => {
         try {
             // console.log(formData)
             const { hostelName, block, roomNo } = formData;
-            console.log(hostelName, block, roomNo);
             const response = await fetch(`http://localhost:8000/api/v1/applyHostel`, {
                 method: "PATCH",
                 headers: {
@@ -55,7 +52,6 @@ const FormElements = () => {
                     roomNumber: roomNo
                 })
             });
-            console.log(response);
             if (response.status === 200) { // Assuming 201 (Created) for successful signup
                 alert(`Registered successfully!`);
                 navigate('/uhomepage'); // Use appropriate redirect logic
@@ -89,7 +85,6 @@ const FormElements = () => {
             });
 
             const data = await res.json();
-            console.log(data.hostelDetails);
             setHostelDetails(data.hostelDetails);
         }
 
