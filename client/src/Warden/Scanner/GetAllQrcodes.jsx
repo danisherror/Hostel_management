@@ -54,7 +54,6 @@ const TableOne = () => {
     }
     const token = getToken();
 
-    console.log(token)
     const getdata = async () => {
 
         const res = await fetch(`http://localhost:8000/api/v1/wgetallqrtokens`, {
@@ -66,7 +65,6 @@ const TableOne = () => {
         });
 
         const data = await res.json();
-        console.log("asd" + data.result);
         if (res.status === 404) {
             console.error("404 Error: Resource not found");
             // Handle the error appropriately, e.g., display an error message to the user
@@ -77,7 +75,6 @@ const TableOne = () => {
 
         } else {
             setRoomIssues(data.result)
-            console.log(roomissues)
             const dateCounts = {};
             data.result.forEach(entry => {
                 const date = entry.date;
@@ -90,8 +87,6 @@ const TableOne = () => {
             const uniqueDatesArray = Object.keys(dateCounts).map(date => ({ date, count: dateCounts[date] }));
 
             setuniqueDate(uniqueDatesArray);
-            console.log(uniqueDatesArray);
-            console.log("get data");
         }
     }
 

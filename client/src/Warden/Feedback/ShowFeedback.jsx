@@ -11,7 +11,6 @@ const TableOne = () => {
   }
   const token = getToken();
 
-  console.log(token)
   const getdata = async () => {
 
       const res = await fetch(`http://localhost:8000/api/v1/wgetstudentfeedback`, {
@@ -23,7 +22,6 @@ const TableOne = () => {
       });
 
       const data = await res.json();
-      console.log(data);
       if (res.status === 404) {
           console.error("404 Error: Resource not found");
           // Handle the error appropriately, e.g., display an error message to the user
@@ -34,8 +32,6 @@ const TableOne = () => {
 
       } else {
           setRoomIssues(data.result)
-          console.log(roomissues)
-          console.log("get data");
       }
   }
 

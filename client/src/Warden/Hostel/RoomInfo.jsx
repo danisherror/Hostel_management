@@ -18,7 +18,6 @@ const TableOne = () => {
     }
     const token = getToken();
 
-    console.log(token)
     const getdata = async () => {
 
         const res = await fetch(`http://localhost:8000/api/v1/wgetHostelDetails`, {
@@ -30,7 +29,6 @@ const TableOne = () => {
         });
 
         const data = await res.json();
-        console.log(data);
         if (res.status === 404) {
             console.error("404 Error: Resource not found");
             // Handle the error appropriately, e.g., display an error message to the user
@@ -45,7 +43,6 @@ const TableOne = () => {
             setHostelDetails(data.result || []);
             setHostelNames(data.hostel_names || []);
             setLoading(false);
-            console.log("get data");
         }
     }
 

@@ -21,21 +21,16 @@ const FormElements = () => {
         });
 
         const data = await res.json();
-        console.log(data);
 
         if (res.status === 422 || !data) {
             console.log("error ");
 
         } else {
-            // setINP(data.user)
+
             setTitle(data.result.title)
             setReview(data.result.description)
             setStatus(data.result.status)
-            // console.log(review);
-            // console.log(title);
-            // console.log(status);
-            // console.log(data.result);
-            // console.log("get data");
+
 
         }
     }
@@ -46,9 +41,6 @@ const FormElements = () => {
 
     const submitFeedback = async (e) => {
 
-        console.log(review)
-        console.log(title)
-        console.log(status)
         try {
             e.preventDefault();
         const response = await fetch(`http://localhost:8000/api/v1/editstudentcomplaintstatus/${id}`, {
@@ -64,7 +56,6 @@ const FormElements = () => {
         });
 
         const data = await response.json();
-        console.log(data);
         if (data.status === 404) {
             console.log("Error submitting feedback");
         } else {
@@ -72,8 +63,7 @@ const FormElements = () => {
             alert("Complaint submitted successfully")
             navigate('/whomepage');
         }
-        // alert("asdasdasd")
-        // navigate('/ahomepage');
+        
     } catch (error) {
         console.error('Error:', error);
 

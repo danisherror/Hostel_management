@@ -65,7 +65,6 @@ const Profile = () => {
                 "Content-Type": "application/json",
             }
         });
-        console.log("----------------------------------------------------");
 
 
         const data = await res.json();
@@ -91,10 +90,8 @@ const Profile = () => {
                 "Authorization": `Bearer ${token}`
             }
         });
-        console.log("----------------------------------------------------");
 
         const data1 = await res1.json();
-        console.log("asd" + data1.result);
         if (res1.status === 404) {
             console.error("404 Error: Resource not found");
             // Handle the error appropriately, e.g., display an error message to the user
@@ -105,7 +102,6 @@ const Profile = () => {
 
         } else {
             setRoomIssues(data.result)
-            console.log(roomissues)
             const dateCounts = {};
             data1.result.forEach(entry => {
                 const date = entry.date;
@@ -118,11 +114,8 @@ const Profile = () => {
             const uniqueDatesArray = Object.keys(dateCounts).map(date => ({ date, count: dateCounts[date] }));
 
             setuniqueDate(uniqueDatesArray);
-            console.log(uniqueDatesArray);
-            console.log("get data");
         }
 
-        console.log("----------------------------------------------------");
         const res2 = await fetch(`http://localhost:8000/api/v1/getStudentHostel/${id}`, {
             method: "GET",
             headers: {
@@ -132,17 +125,14 @@ const Profile = () => {
         });
         const data2 = await res2.json();
         if (data2.result.length === 1) {
-            console.log(1)
             setHostel(data2.result);
         }
         else {
-            console.log(2)
             const ans1 = [{
                 hostelName: "None", block: "None", roomNumber: "None"
             },]
             setHostel(ans1);
         }
-        console.log(data2)
     }
     useEffect(() => {
         getdata();
