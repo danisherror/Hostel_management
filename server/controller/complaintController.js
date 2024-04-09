@@ -40,7 +40,7 @@ exports.editcomplaint = BigPromise(async (req, res, next) => {
     })
 
 })
-exports.getStudentcomplaints = BigPromise(async (req, res, next) => {
+exports.wgetStudentcomplaints = BigPromise(async (req, res, next) => {
     const id = req.user._id;
     const warden = await Warden.findById(id);
     const hostelName = warden.hostelName;
@@ -62,7 +62,7 @@ exports.getStudentcomplaints = BigPromise(async (req, res, next) => {
         result
     })
 })
-exports.wgetStudentcomplaints = BigPromise(async (req, res, next) => {
+exports.getStudentcomplaints = BigPromise(async (req, res, next) => {
 
     const result = await (await complaint.find()).reverse()
     res.status(200).json({
