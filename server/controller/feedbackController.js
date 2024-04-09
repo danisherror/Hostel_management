@@ -81,7 +81,22 @@ exports.wgetStudentfeedback=BigPromise(async(req,res,next)=>{
          result
     })
 })
+exports.deleteFeedback = BigPromise(async (req, res) => {
+    try {
+        const id=req.params.id;
 
+        // Check if hostel exists
+        const result = await feedback.findByIdAndDelete(id);
+        if (!result) {
+            return res.status(400).json({ error: 'Feedback does not exist.' });
+        }
+        // console.log(`Hostel '${hostelName}' deleted successfully.`);
+        res.status(200).json({ message: `Feedback deleted successfully.` });
+    } catch (error) {
+        console.error('Error deleting Feedback:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 exports.test=BigPromise(async(req,res,next)=>{
     res.status(200).json({
         SUCCESS

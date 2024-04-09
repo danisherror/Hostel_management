@@ -91,3 +91,19 @@ exports.wgetallleaveapplication=BigPromise(async(req,res,next)=>{
         result
     })
 })
+exports.deleteLeave = BigPromise(async (req, res) => {
+    try {
+        const id=req.params.id;
+
+        // Check if hostel exists
+        const result = await Leave.findByIdAndDelete(id);
+        if (!result) {
+            return res.status(400).json({ error: 'Leave does not exist.' });
+        }
+        // console.log(`Hostel '${hostelName}' deleted successfully.`);
+        res.status(200).json({ message: `Leave deleted successfully.` });
+    } catch (error) {
+        console.error('Error deleting Leave:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});

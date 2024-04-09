@@ -35,7 +35,7 @@ const TableOne = () => {
             setRoomIssues(data.result)
         }
     }
-    const deleteHostel = async (id) => {
+    const deleteAnnouncement = async (id) => {
         const confirmation = window.confirm("Are you sure you want to delete this announcement?");
     if (confirmation) {
 
@@ -125,7 +125,7 @@ const TableOne = () => {
                                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
 
                                             <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                                                onClick={() => deleteHostel(issuesEntry._id)} >
+                                                onClick={() => deleteAnnouncement(issuesEntry._id)} >
                                                 Delete</button>
                                     </td>
                                 </tr>
