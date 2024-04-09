@@ -21,7 +21,6 @@ const FormElements = () => {
         });
 
         const data = await res.json();
-        console.log(data);
 
         if (res.status === 422 || !data) {
             console.log("error ");
@@ -45,10 +44,6 @@ const FormElements = () => {
     }, []);
 
     const submitFeedback = async (e) => {
-
-        console.log(review)
-        console.log(title)
-        console.log(status)
         try {
             e.preventDefault();
         const response = await fetch(`http://localhost:8000/api/v1/editstudentcomplaintstatus/${id}`, {
@@ -64,7 +59,6 @@ const FormElements = () => {
         });
 
         const data = await response.json();
-        console.log(data);
         if (data.status === 404) {
             console.log("Error submitting feedback");
         } else {

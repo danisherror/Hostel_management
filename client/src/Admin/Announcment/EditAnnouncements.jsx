@@ -29,9 +29,6 @@ const FormElements = () => {
         const url1 = ImgData.url
         setUrl(url1);
         const { hostelName, announcement } = formData;
-        console.log(hostelName)
-        console.log(announcement)
-        console.log(url1)
         const response = await fetch(`http://localhost:8000/api/v1/updateAnnouncement/${id}`, {
             method: "PATCH",
             headers: {
@@ -71,10 +68,8 @@ const FormElements = () => {
             });
 
             const data = await res.json();
-            console.log(data.hostelName);
             setHostelDetails(data.hostelName);
 
-            console.log("--------------------------------");
             const res1 = await fetch(`http://localhost:8000/api/v1/getsingleAnnouncement/${id}`, {
                 method: "GET",
                 headers: {

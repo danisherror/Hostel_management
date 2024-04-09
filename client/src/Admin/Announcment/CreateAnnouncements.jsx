@@ -27,9 +27,6 @@ const FormElements = () => {
         const url1=ImgData.url
         setUrl(url1);
         const { hostelName, announcement } = formData;
-        console.log(hostelName)
-        console.log(announcement)
-        console.log(url1)
         const response = await fetch(`http://localhost:8000/api/v1/createAnnouncement`, {
             method: "POST",
             headers: {
@@ -70,7 +67,6 @@ const FormElements = () => {
             });
 
             const data = await res.json();
-            console.log(data.hostelName);
             setHostelDetails(data.hostelName);
         }
 

@@ -24,9 +24,6 @@ const FormElements = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        console.log(hostelName)
-        console.log(blocks)
         try {
             const response = await fetch('http://localhost:8000/api/v1/createHostel', {
                 method: 'POST',

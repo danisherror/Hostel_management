@@ -5,12 +5,10 @@ import React, { useEffect, useState } from 'react'
 
 const Profile = () => {
     const [getuserdata, setStudentDetail] = useState({});
-    console.log("dsdsds ", getuserdata);
     const getToken = () => {
         return localStorage.getItem('token');
     }
     const token = getToken();
-    console.log(token)
     const getdata = async () => {
 
         const res = await fetch(`http://localhost:8000/api/v1/adminprofile`, {
@@ -22,7 +20,6 @@ const Profile = () => {
         });
 
         const data = await res.json();
-        console.log(data);
         if (res.status === 404) {
             console.error("404 Error: Resource not found");
             // Handle the error appropriately, e.g., display an error message to the user
@@ -33,8 +30,6 @@ const Profile = () => {
 
         } else {
             setStudentDetail(data.user)
-            storeTokenInLS(data.user.status)
-            console.log("get data");
         }
     }
     useEffect(() => {
