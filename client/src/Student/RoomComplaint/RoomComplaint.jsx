@@ -22,9 +22,10 @@ const FormElements = () => {
         const data = await response.json();
 
         if (response.status === 422 || !data) {
-            console.log("Error submitting feedback");
+            console.log("Error submitting Complaint");
         } else {
-            console.log("Feedback submitted successfully:", data);
+            alert("Complaint submitted successfully")
+            console.log("Complaint submitted successfully:", data);
             navigate('/uhomepage');
             // Optionally, you can handle success actions here
         }

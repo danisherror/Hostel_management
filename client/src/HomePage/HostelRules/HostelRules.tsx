@@ -39,13 +39,13 @@ It is mandatory for all the students to open a Bank Account at the Vijaya Bank, 
                 <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="Hostel Rules" />
 
-                        {hostelRules.map((rule, index) => (
-                           <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                                <span style={{ fontSize: '1.5em', marginRight: '5px' }}>•</span>
-                                <span>{rule}</span>
-                            </li>
+                    {hostelRules.map((rule, index) => (
+                        <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                            <span style={{ fontSize: '1.5em', marginRight: '5px' }}>•</span>
+                            <span>{rule}</span>
+                        </li>
 
-                        ))}
+                    ))}
                 </div>
                 <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="Hostel Charges" />

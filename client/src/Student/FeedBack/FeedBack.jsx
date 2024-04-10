@@ -44,6 +44,7 @@ const FormElements = () => {
         if (response.status === 422 || !data) {
             console.log("Error submitting feedback");
         } else {
+            alert("Feedback submitted successfully")
             console.log("Feedback submitted successfully:", data);
             navigate('/uhomepage');
             // Optionally, you can handle success actions here

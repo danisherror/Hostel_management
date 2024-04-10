@@ -64,6 +64,7 @@ import HostelRules from "./HomePage/HostelRules/HostelRules"
 import Contact from './HomePage/Contact/Contact_info';
 import Guidelines from "./HomePage/Guidelines/Guidelines";
 import Mess from "./HomePage/Mess/Mess"
+import Imagess from "./HomePage/HostelRules/Images"
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -130,6 +131,15 @@ function App() {
             <>
               <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <USettings />
+            </>
+          }
+        />
+        <Route
+          path="/imagess"
+          element={
+            <>
+              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <Imagess />
             </>
           }
         />

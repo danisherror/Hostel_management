@@ -5,6 +5,8 @@ import { useAuth } from "../../Auth/Auth"
 import { Link } from 'react-router-dom';
 import LogoDark from '../../images/logo/logo-dark.svg';
 import Logo from '../../images/logo/logo.svg';
+import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb"
+import DefaultLayout from '../../layout/HomePage';
 
 
 
@@ -95,10 +97,8 @@ const SignIn: React.FC = () => {
 
 
   return (
-    // <DefaultLayout>
-    // </DefaultLayout>
-    <>
-      {/* <Breadcrumb pageName="Sign In" /> */}
+    <DefaultLayout>
+      <Breadcrumb pageName="Sign In" />
 
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
@@ -351,7 +351,7 @@ const SignIn: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+      </DefaultLayout>
 
   );
 };

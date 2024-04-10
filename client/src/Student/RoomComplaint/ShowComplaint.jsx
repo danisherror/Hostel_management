@@ -64,7 +64,7 @@ const TableOne = () => {
           console.log("error ");
 
         } else {
-          alert("Announcement deleted successfully")
+          alert("Complaint deleted successfully")
           navigate('/uhomepage');
         }
       }
