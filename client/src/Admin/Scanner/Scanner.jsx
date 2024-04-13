@@ -47,7 +47,8 @@ const FormElements = () => {
             const res = await response.json();
             if (response.status == 200) {
                 alert("Tokens send to backend successfully")
-                navigate('/ahomepage');
+                // navigate('/ahomepage');
+                window.location.reload();
             }
             else {
                 console.log("error ");
@@ -58,24 +59,62 @@ const FormElements = () => {
         }
     };
 
-    const handleScan = (result) => {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 because getMonth() returns zero-based month
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        const dateString = `${year}-${month}-${day}`;
-        const timeString = currentDate.toLocaleTimeString();
-        const scannedData = { _id: result, date: dateString, time: timeString };
-        const existingIndex = scanResults.findIndex(item => item._id === result);
-        // playBeepSound();
-        if (existingIndex === -1) {
-            const newScanner = [...scanResults]
-            newScanner.push(scannedData);
-            setScanResults(newScanner);
+    // const handleScan = (result) => {
+    //     const existingIndex = scanResults.findIndex(item => item._id === result);
 
-        } else {
-            // Optionally, update existing entry here
-            console.log(`Token '${result}' already scanned.`);
+    //     const currentDate = new Date();
+    //     const year = currentDate.getFullYear();
+    //     const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adding 1 because getMonth() returns zero-based month
+    //     const day = String(currentDate.getDate()).padStart(2, '0');
+    //     const dateString = `${year}-${month}-${day}`;
+    //     const timeString = currentDate.toLocaleTimeString();
+    //     const scannedData = { _id: result, date: dateString, time: timeString };
+    //     // const existingIndex = scanResults.findIndex(item => item._id === result);
+    //     // playBeepSound();
+    //     const existingIndex1=true
+    //     if (existingIndex1) {
+    //         const newScanner = [...scanResults]
+    //         newScanner.push(scannedData);
+    //         setScanResults(newScanner);
+
+    //     } else {
+    //         // Optionally, update existing entry here
+    //         console.log(`Token '${result}' already scanned.`);
+    //     }
+    // };
+    const handleScan = async (result) => {
+        try {
+            // console.log(result);
+            const existing = scanResults.findIndex(item => item._id === result);
+            if (existing === -1) {
+                    const currentDate = new Date();
+                    const year = currentDate.getFullYear();
+                    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+                    const day = String(currentDate.getDate()).padStart(2, '0');
+                    const dateString = `${year}-${month}-${day}`;
+                    const timeString = currentDate.toLocaleTimeString();
+                    const scannedData = { _id: result, date: dateString, time: timeString };
+                    const existingIndex = scanResults.findIndex(item => item._id === result);
+                    if (existingIndex===-1) {
+                        const newScanner = [...scanResults]
+                        newScanner.push(scannedData);
+                        // setScanResults(newScanner);
+                        setScanResults(prevResults => [...prevResults, scannedData]);
+
+                    } else {
+                        // Optionally, update existing entry here
+                        console.log(`Token '${result}' already scanned.`);
+                    }
+
+
+                    // playBeepSound();
+                    // setScanResults(prevResults => [...prevResults, scannedData]);
+
+            } else {
+                console.log(`Token '${result}' already scanned.`);
+            }
+        } catch (error) {
+            console.error('Error handling scan:', error);
         }
     };
 

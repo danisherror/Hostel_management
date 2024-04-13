@@ -109,7 +109,7 @@ const TableOne = () => {
                 const dateCounts = {};
                 data.result.forEach(entry => {
                     const timm = entry.time;
-                    const firstFourChars = timm.slice(0, 4); // Get characters from index 0 to 3
+                    const firstFourChars = timm.slice(0, 5); // Get characters from index 0 to 3
                     const lastTwoChars = timm.slice(-2); // Get last 2 characters
                     const date =firstFourChars+" "+lastTwoChars;
                     if (dateCounts[date]) {
@@ -151,7 +151,7 @@ const TableOne = () => {
                 const dateCounts = {};
                 data.result.forEach(entry => {
                     const timm = entry.time;
-                    const firstFourChars = timm.slice(0, 4); // Get characters from index 0 to 3
+                    const firstFourChars = timm.slice(0, 5); // Get characters from index 0 to 3
                     const lastTwoChars = timm.slice(-2); // Get last 2 characters
                     const date =firstFourChars+" "+lastTwoChars;
                     if (dateCounts[date]) {
