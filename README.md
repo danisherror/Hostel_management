@@ -1,4 +1,4 @@
-###Steps to install dependency:
+###Steps to install dependency###:
 <br />
 #For client
 <br/>
@@ -11,7 +11,7 @@ npm install --legacy-peer-deps
 npm install
 <br/>
 
-###Steps to run the project:<br/>
+###Steps to run the project###:<br/>
 #For client<br/>
 npm run dev<br/>
 #For server<br/>
