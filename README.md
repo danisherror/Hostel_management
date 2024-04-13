@@ -1,19 +1,19 @@
-###Steps to install dependency###:
+<h1>Steps to install dependency</h1>
 <br />
-#For client
+<h2>For client</h2>h2>
 <br/>
 write command:<br/>
 git clone https://github.com/danisherror/Hostel_management.git
 <br/>
 npm install --legacy-peer-deps
 <br/>
-#For server<br/>
+<h2>For server</h2><br/>
 npm install
 <br/>
 
-###Steps to run the project###:<br/>
-#For client<br/>
+<h1>Steps to run the project</h1>:<br/>
+<h2>For client</h2><br/>
 npm run dev<br/>
-#For server<br/>
+<h2>For server</h2><br/>
 npm start<br/>
 
