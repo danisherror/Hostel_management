@@ -65,6 +65,7 @@ import Contact from './HomePage/Contact/Contact_info';
 import Guidelines from "./HomePage/Guidelines/Guidelines";
 import Mess from "./HomePage/Mess/Mess"
 import Imagess from "./HomePage/HostelRules/Images"
+import HRoomInfo from "./HomePage/RoomsInfo/RoomInfo";
 //-----------------------------------------------------------------------------
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
@@ -615,6 +616,15 @@ function App() {
             <>
               <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <Mess />
+            </>
+          }
+        />
+        <Route
+          path="/hroominfo"
+          element={
+            <>
+              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <HRoomInfo />
             </>
           }
         />
