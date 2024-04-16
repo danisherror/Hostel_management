@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {signup,signin,adminprofile,getsingleAnnouncement,deleteAnnouncement,showAllAnnouncements,updateAnnouncement,createAnnouncement,showStudentAnnouncements,editImage,getUniqueHostelNames,editAdminProfile,createHostel,deleteHostel,getHostelDetails,getStudentHostel,hostelFormDetails}=require('../controller/adminController')
+const {signup,signin,adminprofile,getsingleAnnouncement,deleteStudentInfo,deleteAnnouncement,showAllAnnouncements,updateAnnouncement,createAnnouncement,showStudentAnnouncements,editImage,getUniqueHostelNames,editAdminProfile,createHostel,deleteHostel,getHostelDetails,getStudentHostel,hostelFormDetails}=require('../controller/adminController')
 const {aisLoggedIn}=require('../middlewares/admin')
 const {isLoggedIn}=require('../middlewares/user')
 const {wisLoggedIn}=require('../middlewares/warden');
@@ -25,6 +25,7 @@ router.route('/getsingleAnnouncement/:id').get(aisLoggedIn,getsingleAnnouncement
 router.route('/updateAnnouncement/:id').patch(updateAnnouncement)
 router.route('/showStudentAnnouncements').get(isLoggedIn,showStudentAnnouncements)
 router.route('/deleteAnnouncement/:id').delete(aisLoggedIn,deleteAnnouncement)
+router.route('/deleteStudentInfo/:id').delete(aisLoggedIn,deleteStudentInfo)
 router.route('/wdeleteAnnouncement/:id').delete(wisLoggedIn,deleteAnnouncement)
 
 module.exports=router;

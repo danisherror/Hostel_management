@@ -84,6 +84,53 @@ const TableOne = () => {
     const rows = data.map(obj => Object.values(obj).join(',')).join('\n');
     return `${header}\n${rows}`;
   };
+  const deleteStudentHostel = async (id) => {
+    const confirmation = window.confirm("Are you sure you want to delete this student hostel info?\n All Student info will be deleted");
+    if (confirmation) {
+
+      const res = await fetch(`http://localhost:8000/api/v1/deleteStudentInfo/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      const data = await res.json();
+      if (res.status === 200) {
+        alert("Student hostel info deleted successfully")
+        window.location.reload();
+        // Handle the error appropriately, e.g., display an error message to the user
+      }else {
+        alert("Error to delete Student hostel info");
+
+      }
+    }
+  }
+  const deleteStudent = async (id) => {
+    const confirmation = window.confirm("Are you sure you want to delete this Student?");
+    if (confirmation) {
+
+      const res = await fetch(`http://localhost:8000/api/v1/deleteStudent/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      const data = await res.json();
+      if (res.status === 200) {
+        alert("Student deleted successfully")
+        window.location.reload();
+        alert("404 Error: Resource not found");
+        // Handle the error appropriately, e.g., display an error message to the user
+      }else {
+        alert("Error to delete Student");
+
+      }
+    }
+  }
 
 
 
@@ -124,6 +171,12 @@ const TableOne = () => {
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                 Full Profile
               </th>
+              <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                Delete Hostel Info
+              </th>
+              <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                Delete Student
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -141,18 +194,22 @@ const TableOne = () => {
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-
-                  {/* <button
-                                className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                                type="submit"
-                                onClick={submitLeave}
-                            >
-                                Save
-                            </button> */}
                   <NavLink to={"/ShowStudentProfile"}>
                     <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                       onClick={() => storeIdInLs(studenti._id)} >
                       Profile</button></NavLink>
+                </td>
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+
+                  <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
+                    onClick={() => deleteStudentHostel(studenti._id)} >
+                    Delete</button>
+                </td>
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+
+                  <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
+                    onClick={() => deleteStudent(studenti._id)} >
+                    Delete Student</button>
                 </td>
               </tr>
             ))}

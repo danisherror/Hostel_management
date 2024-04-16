@@ -103,7 +103,7 @@ function App() {
           index
           element={
             <>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <HomePage />
             </>
           }
@@ -112,7 +112,7 @@ function App() {
           path="/uhomepage"
           element={
             <>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ECommerce />
             </>
           }
@@ -121,7 +121,7 @@ function App() {
           path="/uprofile"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <UProfile />
             </>
           }
@@ -130,7 +130,7 @@ function App() {
           path="/usettings"
           element={
             <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <USettings />
             </>
           }
@@ -139,7 +139,7 @@ function App() {
           path="/imagess"
           element={
             <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Imagess />
             </>
           }
@@ -148,7 +148,7 @@ function App() {
           path="/leaveapplication"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <LeaveApplication />
             </>
           }
@@ -157,7 +157,7 @@ function App() {
           path="/printleaveapplication"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Printleaveapplication />
             </>
           }
@@ -166,7 +166,7 @@ function App() {
           path="/editStudentleaveapplication"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <EditLeaveApplication />
             </>
           }
@@ -176,7 +176,7 @@ function App() {
           path="/roomcomplaint"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Roomcomplaint />
             </>
           }
@@ -185,7 +185,7 @@ function App() {
           path="/printRoomComplaints"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <PrintRoomComplaints />
             </>
           }
@@ -194,7 +194,7 @@ function App() {
           path="/editStudentComplaint"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <EditComplaint />
             </>
           }
@@ -204,7 +204,7 @@ function App() {
           path="/feedback"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <FeedbackPage />
             </>
           }
@@ -213,7 +213,7 @@ function App() {
           path="/printFeedbackData"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <PrintStudentFeedbacks />
             </>
           }
@@ -222,7 +222,7 @@ function App() {
           path="/editStudentFeedBack"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <EditStudentFeedBack />
             </>
           }
@@ -231,7 +231,7 @@ function App() {
           path="/applyHostel"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ApplyHostel />
             </>
           }
@@ -242,7 +242,7 @@ function App() {
           path="/ahomepage"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <AdminDashBoard />
             </>
           }
@@ -251,7 +251,7 @@ function App() {
           path="/aprofile"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <AProfile />
             </>
           }
@@ -260,7 +260,7 @@ function App() {
           path="/asettings"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ASetting />
             </>
           }
@@ -270,7 +270,7 @@ function App() {
           path="/getHostelDetails"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <GetHostelDetails />
             </>
           }
@@ -279,7 +279,7 @@ function App() {
           path="/createHostel"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <CreateHostel />
             </>
           }
@@ -288,7 +288,7 @@ function App() {
           path="/deleteHostel"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <DeleteHostel />
             </>
           }
@@ -297,7 +297,7 @@ function App() {
           path="/getLeaveApplication"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <GetStudentLeaveApplication />
             </>
           }
@@ -306,7 +306,7 @@ function App() {
           path="/changeleaveApplicationStatus"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <AEditstudentLeaveApplication />
             </>
           }
@@ -315,7 +315,7 @@ function App() {
           path="/getstudentroomissues"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <GetStudentRoomIsses />
             </>
           }
@@ -324,7 +324,7 @@ function App() {
           path="/changerooomissueStatus"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ChangeRoomIssueStatus />
             </>
           }
@@ -333,7 +333,7 @@ function App() {
           path="/getStudentFeedback"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <GetStudentFeedbacks />
             </>
           }
@@ -342,7 +342,7 @@ function App() {
           path="/ShowStudentProfile"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ShowStudentProfile />
             </>
           }
@@ -351,7 +351,7 @@ function App() {
           path="/getallStudents"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <GetStudentProfile />
             </>
           }
@@ -360,7 +360,7 @@ function App() {
           path="/scanqrcode"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <QRScanner />
             </>
           }
@@ -369,7 +369,7 @@ function App() {
           path="/getAllQrTokens"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <GetAllQrTokens />
             </>
           }
@@ -378,7 +378,7 @@ function App() {
           path="/createAnnouncement"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <CreateAnnouncements />
             </>
           }
@@ -387,7 +387,7 @@ function App() {
           path="/showAllAnouncements"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ShowAllAnouncements />
             </>
           }
@@ -397,7 +397,7 @@ function App() {
           path="/showStudentAnnouncements"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ShowStudentAnnouncements />
             </>
           }
@@ -406,7 +406,7 @@ function App() {
           path="/editAnnouncement"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <EditAnnouncement />
             </>
           }
@@ -415,7 +415,7 @@ function App() {
           path="/createWarden"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <CreateWarden />
             </>
           }
@@ -424,7 +424,7 @@ function App() {
           path="/showAllWardenDetails"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ShowAllWardenDetails />
             </>
           }
@@ -433,7 +433,7 @@ function App() {
           path="/showWardenProfile"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ShowWardenProfile />
             </>
           }
@@ -442,7 +442,7 @@ function App() {
           path="/deleteWarden"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <DeleteWarden />
             </>
           }
@@ -451,7 +451,7 @@ function App() {
           path="/whomepage"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WardenDashboard />
             </>
           }
@@ -461,7 +461,7 @@ function App() {
           path="/wcreateAnnouncement"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WcreateAnnouncement />
             </>
           }
@@ -470,7 +470,7 @@ function App() {
           path="/wshowAnnouncement"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <ShowWardenAnnouncement />
             </>
           }
@@ -479,7 +479,7 @@ function App() {
           path="/weditAnnouncement"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WEditAnnouncement />
             </>
           }
@@ -488,7 +488,7 @@ function App() {
           path="/wgetStudentFeedback"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WShowFeedback />
             </>
           }
@@ -497,7 +497,7 @@ function App() {
           path="/wgetHostelDetails"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WRoomInfo />
             </>
           }
@@ -506,7 +506,7 @@ function App() {
           path="/wgetLeaveApplication"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WgetLeaveApplication />
             </>
           }
@@ -515,7 +515,7 @@ function App() {
           path="/wchangeleaveApplicationStatus"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WEditstudentLeaveApplication />
             </>
           }
@@ -524,7 +524,7 @@ function App() {
           path="/wgetstudentroomissues"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WGetStudentRoomIsses />
             </>
           }
@@ -533,7 +533,7 @@ function App() {
           path="/wchangerooomissueStatus"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WChangeRoomIssueStatus />
             </>
           }
@@ -542,7 +542,7 @@ function App() {
           path="/wgetallStudents"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WGetStudentProfile />
             </>
           }
@@ -551,7 +551,7 @@ function App() {
           path="/wShowStudentProfile"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WShowStudentProfile />
             </>
           }
@@ -560,7 +560,7 @@ function App() {
           path="/wscanqrcode"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WQRScanner />
             </>
           }
@@ -569,7 +569,7 @@ function App() {
           path="/wgetAllQrTokens"
           element={
             <>
-              <PageTitle title="Hostel | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WGetAllQrTokens />
             </>
           }
@@ -578,7 +578,7 @@ function App() {
           path="/wprofile"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <WProfile />
             </>
           }
@@ -587,7 +587,7 @@ function App() {
           path="/hostelrules"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <HostelRules />
             </>
           }
@@ -596,7 +596,7 @@ function App() {
           path="/contact"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Contact />
             </>
           }
@@ -605,7 +605,7 @@ function App() {
           path="/guidelines"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Guidelines />
             </>
           }
@@ -614,7 +614,7 @@ function App() {
           path="/mess"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Mess />
             </>
           }
@@ -623,7 +623,7 @@ function App() {
           path="/hroominfo"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <HRoomInfo />
             </>
           }
@@ -632,7 +632,7 @@ function App() {
           path="/forms/form-elements"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <FormElements />
             </>
           }
@@ -641,7 +641,7 @@ function App() {
           path="/forms/form-layout"
           element={
             <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <FormLayout />
             </>
           }
@@ -650,7 +650,7 @@ function App() {
           path="/tables"
           element={
             <>
-              <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Tables />
             </>
           }
@@ -660,7 +660,7 @@ function App() {
           path="/chart"
           element={
             <>
-              <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Chart />
             </>
           }
@@ -669,7 +669,7 @@ function App() {
           path="/ui/alerts"
           element={
             <>
-              <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Alerts />
             </>
           }
@@ -678,7 +678,7 @@ function App() {
           path="/ui/buttons"
           element={
             <>
-              <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <Buttons />
             </>
           }
@@ -687,7 +687,7 @@ function App() {
           path="/signin"
           element={
             <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <SignIn />
             </>
           }
@@ -696,7 +696,7 @@ function App() {
           path="/signup"
           element={
             <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eReside" />
               <SignUp />
             </>
           }

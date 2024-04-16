@@ -63,7 +63,7 @@ const TableOne = () => {
 
         } else {
             alert("Announcement deleted successfully")
-            navigate('/ahomepage');
+            window.location.reload();
         }
     }
     }
