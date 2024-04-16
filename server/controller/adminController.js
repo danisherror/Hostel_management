@@ -194,6 +194,25 @@ exports.deleteStudentInfo = BigPromise(async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+exports.deleteStudent = BigPromise(async (req, res) => {
+    try {
+        const id = req.params.id;
+        await feedback.deleteMany({ id })
+        await Leave.deleteMany({ id })
+        await complaint.deleteMany({ id })
+        await Qrtokens.deleteMany({ user:id })
+        const hos = await CollegeHostelRoom.updateMany(
+            { studentIds: id },
+            { $pull: { studentIds: id } }
+        );
+        await User.deleteOne({_id:id})
+        res.status(200).json({ message: `Student deleted successfully.` });
+
+    } catch (error) {
+        console.error('Error deleting Student :', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 exports.deleteAnnouncement = BigPromise(async (req, res) => {
     try {
         const id = req.params.id;

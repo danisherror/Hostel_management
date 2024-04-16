@@ -123,7 +123,6 @@ const TableOne = () => {
       if (res.status === 200) {
         alert("Student deleted successfully")
         window.location.reload();
-        alert("404 Error: Resource not found");
         // Handle the error appropriately, e.g., display an error message to the user
       }else {
         alert("Error to delete Student");
