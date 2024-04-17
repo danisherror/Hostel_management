@@ -17,6 +17,7 @@ const hostel=require('./Routes/hostel')
 const leaveApplication= require("./Routes/leaveapplication")
 const qrtokens = require('./Routes/qrtokens')
 const warden =require('./Routes/warden')
+const inout=require('./Routes/inout')
 const cors = require('cors');
 app.use(cors({
     origin: 'http://localhost:5173'
@@ -30,6 +31,7 @@ app.use("/api/v2",hostel)
 app.use("/api/v1",leaveApplication)
 app.use("/api/v1",qrtokens)
 app.use("/api/v1",warden)
+app.use("/api/v1",inout)
 app.get('/test',(req,res)=>{
     res.send("SUCCESS")
 })
