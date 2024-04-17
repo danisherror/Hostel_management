@@ -2,8 +2,67 @@ const Qrtokens = require('../models/qrtokens');
 const BigPromise = require('../middlewares/bigPromise');
 const Warden=require('../models/warden');
 const Hostel =require('../models/hostel');
+const inOut=require('../models/inout')
 exports.addqrtokens = BigPromise(async (req, res, next) => {
     const tokens = req.body.scanResults; // Assuming tokens are sent in an array in req.body
+    const s_id=tokens[0]._id
+    const time=tokens[0].time
+    const date=tokens[0].date
+    
+    const data=await inOut.findOne({"student_id":s_id})
+    if(!data){
+        const time1=[
+            {
+                in_time:time,
+                in_date:date,
+            }
+        ]
+        // console.log(time1)
+        const result=await inOut.create({
+            student_id:s_id,
+            timing:[
+                {
+                    out_time:time,
+                    out_date:date,
+                }
+            ],
+            count:1
+
+        })
+        // console.log(result)
+    }
+    else{
+        // console.log(data);
+        let array=data.timing
+        // console.log(array)
+        let count=data.count
+        // console.log(count)
+        if(count%2===0){
+            array[array.length]={
+                out_time:time,
+                out_date:date,
+            }
+          
+            // console.log(array);
+            count=count+1;
+        }
+        else{
+            // console.log("ODDDDDDDDDDDDDDDDDDDDDDDD")
+            array[array.length-1].in_time=time
+            array[array.length-1].in_date=date
+            // console.log(array);
+            count=count+1;
+
+
+        }
+        const res=await inOut.findByIdAndUpdate(data._id,{
+            timing:array,
+            count:count
+        })
+        // console.log(res)
+    }
+
+
     for (let i = 0; i < tokens.length; i++) {
         const result = await Qrtokens.create({
             user: tokens[i]._id,
