@@ -34,7 +34,7 @@ exports.editfeedback=BigPromise(async(req,res,next)=>{
         rating:rating
     })
 
-    res.status("200").json({
+    res.status(200).json({
         message:"SUCCESSFULLY UPDATED"
     })
 

@@ -55,7 +55,7 @@ const FormElements = () => {
 
     return (
         <DefaultLayout>
-            <Breadcrumb pageName="Form Elements" />
+            <Breadcrumb pageName="Leave Application" />
 
             <div className="grid grid-cols-1 gap-9 sm:grid-cols-1">
 
