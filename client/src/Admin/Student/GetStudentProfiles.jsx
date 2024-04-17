@@ -171,9 +171,12 @@ const TableOne = () => {
                 Full Profile
               </th>
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                Delete Hostel Info
+                In-Out Details
               </th>
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                Delete Student
+              </th>
+               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                 Delete Student
               </th>
             </tr>
@@ -197,6 +200,12 @@ const TableOne = () => {
                     <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                       onClick={() => storeIdInLs(studenti._id)} >
                       Profile</button></NavLink>
+                </td>
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <NavLink to={"/agetinoutdetail"}>
+                    <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
+                      onClick={() => storeIdInLs(studenti._id)} >
+                      In-Out Detail</button></NavLink>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
 

@@ -107,7 +107,7 @@ const FormElements = () => {
                     }
 
 
-                    // playBeepSound();
+                    playBeepSound();
                     // setScanResults(prevResults => [...prevResults, scannedData]);
 
             } else {

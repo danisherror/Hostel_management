@@ -16,6 +16,7 @@ import ApplyHostel from "./Student/Hostel/ApplyHostel"
 import UProfile from './Student/Profile/Profile';
 import USettings from './Student/Profile/Settings';
 import ShowStudentAnnouncements from "./Student/Announcements/showAnnouncements"
+import GetinoutdetailStudent from "./Student/InoutDetails/InoutDetaile"
 //------------------------------------------------------------------------------
 //admin
 import AdminDashBoard from './pages/Dashboard/AdminDashBoard';
@@ -40,6 +41,7 @@ import CreateWarden from "./Admin/Warden/CreateWarden";
 import ShowAllWardenDetails from "./Admin/Warden/ShowWardens"
 import ShowWardenProfile from "./Admin/Warden/ShowSingleWarden";
 import DeleteWarden from "./Admin/Warden/DeleteWarden";
+import Agetinoutdetail from "./Admin/Scanner/InoutDetails"
 //-----------------------------------------------------------------------------
 //warden
 import WardenDashboard from './pages/Dashboard/WardenDashBoard';
@@ -57,6 +59,7 @@ import WShowStudentProfile from "./Warden/Student/ShowStudentProfile"
 import WQRScanner from "./Warden/Scanner/Scanner";
 import WGetAllQrTokens from "./Warden/Scanner/GetAllQrcodes";
 import WProfile from "./Warden/Profile/Profile";
+import Wgetinoutdetail from "./Warden/Scanner/InoutStudent"
 //-----------------------------------------------------------------------------
 //Homepage
 import HomePage from "./pages/Dashboard/HomePage"
@@ -224,6 +227,33 @@ function App() {
             <>
               <PageTitle title="eReside" />
               <EditStudentFeedBack />
+            </>
+          }
+        />
+        <Route
+          path="/getinoutdetailStudent"
+          element={
+            <>
+              <PageTitle title="eReside" />
+              <GetinoutdetailStudent />
+            </>
+          }
+        />
+        <Route
+          path="/agetinoutdetail"
+          element={
+            <>
+              <PageTitle title="eReside" />
+              <Agetinoutdetail />
+            </>
+          }
+        />
+         <Route
+          path="/wgetinoutdetail"
+          element={
+            <>
+              <PageTitle title="eReside" />
+              <Wgetinoutdetail />
             </>
           }
         />
