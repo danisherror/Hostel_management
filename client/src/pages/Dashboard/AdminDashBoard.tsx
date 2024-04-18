@@ -18,6 +18,8 @@ const ECommerce: React.FC = () => {
   const [roomissues, setRoomIssues] = useState("");
   const [hostelDetails, setHostelDetails] = useState("");
   const [announcement, setAnnouncement] = useState("");
+  const [insummary, setInsummary] = useState("");
+  const [outsummary, setOutsummary] = useState("");
   const getToken = () => {
     return localStorage.getItem('token');
   }
@@ -151,6 +153,30 @@ const getannouncement = async () => {
     setAnnouncement(data.result.length)
   }
 }
+const getinoutsummary = async () => {
+
+  const res = await fetch(`http://localhost:8000/api/v1/agetinoutsummary`, {
+      method: "GET",
+      headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+      }
+  });
+
+  const data = await res.json();
+  if (res.status === 404) {
+      console.error("404 Error: Resource not found");
+      // Handle the error appropriately, e.g., display an error message to the user
+  }
+
+  if (res.status === 422 || !data) {
+      console.log("error ");
+
+  } else {
+    setInsummary(data.in)
+    setOutsummary(data.out);
+  }
+}
 
   useEffect(() => {
     getfeedback();
@@ -159,21 +185,26 @@ const getannouncement = async () => {
     getroomissues();
     gethostel();
     getannouncement();
+    getinoutsummary();
   }, [])
   return (
     <DefaultLayout>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-6 2xl:gap-7.5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
         <CardDataStats title="Hostels" total={hostelDetails}>
         </CardDataStats>
         <CardDataStats title="Room Complaints" total={roomissues}>
         </CardDataStats>
-        <CardDataStats title="Students" total={studentdetail}>
+        <CardDataStats title="Students Registered" total={studentdetail}>
         </CardDataStats>
         <CardDataStats title="Leave Applications" total={leaveData}>
         </CardDataStats>
         <CardDataStats title="Feedbacks" total={feedback}>
         </CardDataStats>
         <CardDataStats title="Announcements" total={announcement}>
+        </CardDataStats>
+        <CardDataStats title="Student Inside" total={insummary}>
+        </CardDataStats>
+        <CardDataStats title="Student Outside" total={outsummary}>
         </CardDataStats>
       </div>
 

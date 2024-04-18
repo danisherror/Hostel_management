@@ -31,3 +31,27 @@ exports.getdetailsStudent=BigPromise(async(req,res,next)=>{
         array
     })
 })
+exports.getsummary=BigPromise(async(req,res,next)=>{
+
+    // const data=await User.find({})
+    // const totalStudent=data.length
+
+    let inStudent=0;
+    let outStudent=0;
+
+    const data1=await inout.find({})
+
+    for(let i=0;i<data1.length;i++){
+        let count=data1[i].count;
+        //console.log(count);
+        if(count%2===0)
+            inStudent++
+        else
+            outStudent++
+    }
+
+    res.status(200).json({
+        in:inStudent,
+        out:outStudent
+    })
+})
