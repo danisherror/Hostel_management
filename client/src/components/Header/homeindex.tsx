@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import DropdownMessage from './DropdownMessage';
 import DropdownNotification from './DropdownNotification';
-import DropdownUser from './DropdownUser';
+import DropdownUser from './User/Feedbacks';
 import Logo from '../../images/logo/logo.png';
 import DarkModeSwitcher from './DarkModeSwitcher';
 
