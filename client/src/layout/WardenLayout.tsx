@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from 'react';
-import Header from '../components/Header/homeindex';
+import Header from '../components/Header/wardenindex';
 import Sidebar from '../components/Sidebar/Warden';
 
 const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -10,7 +10,7 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className="flex h-screen overflow-hidden">
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {/* <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
