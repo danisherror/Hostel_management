@@ -29,7 +29,7 @@ const HostelFacilities = () => {
         setSelectedImage(image);
         setShowModal(true);
     };
-    const images=[Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,Image9,Image10,Image11,Image12,Image13,Image14,Image15,Image16,Image17,Image18,Image19,Image20]
+    const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20]
 
     const handleCloseModal = () => {
         setSelectedImage(null);
@@ -39,7 +39,7 @@ const HostelFacilities = () => {
     return (
         <DefaultLayout>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-            {images.map((image, index) => (
+                {images.map((image, index) => (
                     <div key={index} className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-blue-950" onClick={() => handleClick(image)}>
                         <img src={image} alt={`Hostel Image ${index + 1}`} />
                     </div>
@@ -48,7 +48,11 @@ const HostelFacilities = () => {
 
             {showModal && (
                 <div className="modal-overlay" onClick={handleCloseModal}>
+
                     <div className="modal">
+                        <button className="close-button" onClick={handleCloseModal}>
+                            X
+                        </button>
                         <img src={selectedImage} alt="Enlarged Image" className="modal-image" />
                     </div>
                 </div>
@@ -57,43 +61,50 @@ const HostelFacilities = () => {
             {/* CSS */}
             <style>
                 {`
-                    .modal-overlay {
-                        position: fixed;
-                        top: 0;
-                        left: 20%; /* Align to 20% from left */
-                        width: 80%; /* Occupy 80% of the screen width */
-                        height: 100%;
-                        background-color: rgba(0, 0, 0, 0.7);
-                        z-index: 999;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 20%; /* Align to 20% from left */
+            width: 60%; /* Occupy 80% of the screen width */
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-                    .modal {
-                        max-width: 100%;
-                        max-height: 100%;
-                        overflow: hidden;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        transition: transform 0.3s ease-out;
-                    }
+        .modal {
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-                    .modal-image {
-                        max-width: 100%;
-                        max-height: 100%;
-                        transition: transform 0.3s ease-out;
-                    }
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+        }
 
-                    .modal-overlay:hover .modal {
-                        transform: scale(1.1);
-                    }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-                    .modal-overlay:hover .modal-image {
-                        transform: scale(1.1);
-                    }
-                `}
+        .close-button:hover {
+            color: red; /* Change color on hover if desired */
+        }
+    `}
             </style>
         </DefaultLayout>
     );
