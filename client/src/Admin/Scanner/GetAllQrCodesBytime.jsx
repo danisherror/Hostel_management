@@ -11,8 +11,11 @@ const TableOne = () => {
     const [pendingroomissue,setpendingroomissue]=useState(Number)
     const [leaveData, setLeaveData] = useState("");
     const [pendingleave, setPendingleave] = useState(Number);
+    const [hostelDetails, setHostelDetails] = useState("");
+    const [occupiedRoom, setOccupiedRoom] = useState(Number);
     const [selectedData, setSelectedData] = useState('All');
-
+    const [insummary, setInsummary] = useState("");
+    const [outsummary, setOutsummary] = useState("");
     const state = {
         series: [
             {
@@ -21,7 +24,9 @@ const TableOne = () => {
             }
         ],
         series1: [ Number(leaveData) - pendingleave,pendingleave],
-        series2: [ Number(roomissues) - pendingroomissue,pendingroomissue]
+        series2: [ Number(roomissues) - pendingroomissue,pendingroomissue],
+        series3: [  occupiedRoom,Number(hostelDetails)-occupiedRoom],
+        series4: [  Number(insummary),Number(outsummary)],
 
     };
     const options1 = {
@@ -53,6 +58,50 @@ const TableOne = () => {
             type: 'pie',
           },
           labels: ['Complete', 'Pending'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }],
+        tooltip: {
+            theme: 'dark'
+        }
+    };
+    const options3 = {
+        colors: ['#3C50E0', '#FF0000'], // Line color for the pie chart and Red color for Pending
+        chart: {
+            width: 380,
+            type: 'pie',
+          },
+          labels: ['Room Occupied', 'Room Empty'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }],
+        tooltip: {
+            theme: 'dark'
+        }
+    };
+    const options4 = {
+        colors: ['#3C50E0', '#FF0000'], // Line color for the pie chart and Red color for Pending
+        chart: {
+            width: 380,
+            type: 'pie',
+          },
+          labels: ['Student Inside Hostel', 'Student outside Hostel'],
           responsive: [{
             breakpoint: 480,
             options: {
@@ -284,12 +333,74 @@ const TableOne = () => {
             setPendingleave(pen)
         }
     }
+    const getroomdetails = async () => {
+
+        const res = await fetch(`http://localhost:8000/api/v1/getHostelDetails`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const data = await res.json();
+        if (res.status === 404) {
+            console.error("404 Error: Resource not found");
+            // Handle the error appropriately, e.g., display an error message to the user
+            setLoading(false);
+        }
+
+        if (res.status === 422 || !data) {
+            console.log("error ");
+            setLoading(false);
+
+        } else {
+            let cnt=0;
+            setHostelDetails(data.all_hostel.length)
+            for(let i=0; i<data.all_hostel.length; i++)
+            {
+                if(data.all_hostel[i].studentIds.length > 0)
+                {
+                    cnt++;
+                }
+            }
+            setOccupiedRoom(cnt);
+        }
+    }
+    const getinoutsummary = async () => {
+
+        const res = await fetch(`http://localhost:8000/api/v1/agetinoutsummary`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const data = await res.json();
+        if (res.status === 404) {
+            console.error("404 Error: Resource not found");
+            // Handle the error appropriately, e.g., display an error message to the user
+        }
+
+        if (res.status === 422 || !data) {
+            console.log("error ");
+
+        } else {
+          setInsummary(data.in)
+          setOutsummary(data.out);
+        }
+      }
+
+
 
     useEffect(() => {
         getdata();
         getchartData();
         getleave();
         getroomissues();
+        getroomdetails();
+        getinoutsummary();
     }, [selectedData]);
 
     return (
@@ -328,7 +439,7 @@ const TableOne = () => {
             <div className="col-span-12 rounded-sm border border-stroke bg-white px-8 pt-8.5 pb-8 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-8.5 xl:col-span-6">
                 <div className="flex justify-end gap-4.5 mb-2.5">
                     <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
-                        Leave Application Data
+                        Leave Application Status
                     </h4>
                     <br></br>
 
@@ -346,7 +457,7 @@ const TableOne = () => {
             <div className="col-span-12 rounded-sm border border-stroke bg-white px-8 pt-8.5 pb-8 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-8.5 xl:col-span-6">
                 <div className="flex justify-end gap-4.5 mb-2.5">
                     <h4 className="absolute left-155 mb-2 text-xl font-semibold text-black dark:text-white">
-                       Room Complaint Data
+                       Room Complaint Status
                     </h4>
                     <br></br>
 
@@ -361,6 +472,42 @@ const TableOne = () => {
                 />
                 </div>
             </div>
+            <div className="col-span-12 rounded-sm border border-stroke bg-white px-8 pt-8.5 pb-8 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-8.5 xl:col-span-6">
+                <div className="flex justify-end gap-4.5 mb-2.5">
+                <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
+                        Room Data
+                    </h4>
+                    <br></br>
+
+                </div>
+                <div className="-ml-5 -mb-9">
+                <ReactApexChart
+                    options={options3}
+                    series={state.series3}
+                    type="pie"
+                    name="extra"
+                    height={350}
+                />
+                </div>
+            </div>
+            <div className="col-span-12 rounded-sm border border-stroke bg-white px-8 pt-8.5 pb-8 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-8.5 xl:col-span-6">
+                <div className="flex justify-end gap-4.5 mb-2.5">
+                    <h4 className="absolute left-155 mb-2 text-xl font-semibold text-black dark:text-white">
+                       Student In-Out Data
+                    </h4>
+                    <br></br>
+
+                </div>
+                <div className="-ml-5 -mb-9">
+                <ReactApexChart
+                    options={options4}
+                    series={state.series4}
+                    type="pie"
+                    name="extra"
+                    height={350}
+                />
+                </div>
+            </div>
 
         </>
 
@@ -368,4 +515,3 @@ const TableOne = () => {
 };
 
 export default TableOne;
-

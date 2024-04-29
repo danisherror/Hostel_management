@@ -130,47 +130,46 @@ const TableOne = () => {
                         className="mb-3 block text-sm font-medium text-black dark:text-white"
                         htmlFor="fullName"
                     >
-                       Search:
+                        Search:
                     </label>
                     <div className="relative">
-                    <input
-                          className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                          type="text"
+                        <input
+                            className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                            type="text"
 
-                          value={searchTerm}
-                                        onChange={(e) => setSearchTerm(e.target.value)}
-                          placeholder="Devid Jhon"
-                          defaultValue="Devid Jhon"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            placeholder="Devid Jhon"
+                            defaultValue="Devid Jhon"
                         />
                     </div>
 
                 </div>
                 <div className="flex justify-end gap-2.5">
                     <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90" onClick={generateReport}>Generate Report</button>
-                    </div>
+                </div>
                 <br></br>
 
                 <table className="w-full table-auto">
-                    <div className="scroll-container" style={{ maxHeight: '500px', overflowY: 'scroll' }}>
                         <thead>
                             <tr className="bg-gray-2 text-left dark:bg-meta-4">
                                 <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                                    Hostel Name
+                                Hostel Name
                                 </th>
                                 <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
-                                    Block
+                                Block
                                 </th>
                                 <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                                    Room No
+                                Room No
                                 </th>
                                 <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                                    Room Capacity
+                                Room Capacity
                                 </th>
                                 <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                                    Student Present
+                                Student Present
                                 </th>
                                 <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                                    Student Details
+                                Student Details
                                 </th>
                             </tr>
                         </thead>
@@ -235,7 +234,7 @@ const TableOne = () => {
                                 </tr>
                             ))}
                         </tbody>
-                    </div>
+
                 </table>
             </div>
         </DefaultLayout>
