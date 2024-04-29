@@ -2,6 +2,7 @@ import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
 import React, { useEffect, useState } from 'react'
 import jsPDF from 'jspdf';
+import ReactApexChart from 'react-apexcharts';
 import 'jspdf-autotable';
 // const packageData = []
 
@@ -10,6 +11,59 @@ const TableThree = () => {
     const getToken = () => {
         return localStorage.getItem('token');
     }
+    const state = {
+        series: [
+            {
+                name: 'In Time',
+                data: inout.map(student => student.in_time),
+                color: 'blue',
+
+            },
+            {
+                name: 'Out Time',
+                data: inout.map(student => student.out_time),
+                color: 'red',
+
+            }
+        ]
+      };
+      const options = {
+        colors: ['#3C50E0'],
+        chart: {
+          fontFamily: 'Satoshi, sans-serif',
+          type: 'line',
+          height: 335,
+          toolbar: {
+            show: true,
+          },
+          zoom: {
+            enabled: false,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        xaxis: {
+          categories: inout.map(item => item.out_date),
+        },
+        yaxis: {
+            categories: inout.map(item => item.out_time),
+          },
+        markers: {
+          size: 6,
+          strokeWidth: 0,
+          hover: {
+            size: 8
+          }
+        },
+        legend: {
+          show: false
+        },
+        tooltip: {
+          theme: 'dark'
+        }
+      };
+
     const token = getToken();
     const getdata = async () => {
         const res = await fetch(`http://localhost:8000/api/v1/getinoutdetailStudent`, {
@@ -115,6 +169,16 @@ const TableThree = () => {
                         </tbody>
                     </table>
                 </div>
+                </div>
+                <br></br>
+                <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+
+                <ReactApexChart
+                options={options}
+                series={state.series}
+                type="line"
+                height={350}
+              />
             </div>
         </DefaultLayout>
     );

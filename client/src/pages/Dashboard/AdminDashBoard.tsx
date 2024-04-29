@@ -9,7 +9,7 @@ import ChatCard from '../../components/Chat/ChatCard';
 import MapOne from '../../components/Maps/MapOne';
 import TableOne from '../../components/Tables/TableOne';
 import DefaultLayout from '../../layout/AdminLayout';
-
+import ReactApexChart from 'react-apexcharts';
 const ECommerce: React.FC = () => {
 
   const [feedback, setfeedback] = useState("");

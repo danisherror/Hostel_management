@@ -8,14 +8,65 @@ const TableOne = () => {
     const [roomissues, setRoomIssues] = useState([]);
     const [uniqueDate, setuniqueDate] = useState([]);
     const [hostelNames, setHostelNames] = useState([]);
+    const [pendingroomissue,setpendingroomissue]=useState(Number)
+    const [leaveData, setLeaveData] = useState("");
+    const [pendingleave, setPendingleave] = useState(Number);
     const [selectedData, setSelectedData] = useState('All');
+
     const state = {
         series: [
             {
                 name: 'Count',
                 data: uniqueDate.map(item => item.count),
             }
-        ]
+        ],
+        series1: [ Number(leaveData) - pendingleave,pendingleave],
+        series2: [ Number(roomissues) - pendingroomissue,pendingroomissue]
+
+    };
+    const options1 = {
+        colors: ['#3C50E0', '#FF0000'], // Line color for the pie chart and Red color for Pending
+        chart: {
+            width: 380,
+            type: 'pie',
+          },
+          labels: ['Complete', 'Pending'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }],
+        tooltip: {
+            theme: 'dark'
+        }
+    };
+    const options2 = {
+        colors: ['#3C50E0', '#FF0000'], // Line color for the pie chart and Red color for Pending
+        chart: {
+            width: 380,
+            type: 'pie',
+          },
+          labels: ['Complete', 'Pending'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }],
+        tooltip: {
+            theme: 'dark'
+        }
     };
 
     const convertTo24HourFormat = (timeStr) => {
@@ -25,9 +76,9 @@ const TableOne = () => {
         minutes = parseInt(minutes);
 
         if (period === "PM" && hours < 12) {
-          hours += 12;
+            hours += 12;
         } else if (period === "AM" && hours === 12) {
-          hours = 0;
+            hours = 0;
         }
 
         return hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
@@ -83,6 +134,36 @@ const TableOne = () => {
         data.hostelName.reverse();
         setHostelNames(data.hostelName);
     }
+    const getroomissues = async () => {
+
+        const res = await fetch(`http://localhost:8000/api/v1/getstudentroomissues`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const data = await res.json();
+        if (res.status === 404) {
+          console.error("404 Error: Resource not found");
+          // Handle the error appropriately, e.g., display an error message to the user
+        }
+
+        if (res.status === 422 || !data) {
+          console.log("error ");
+
+        } else {
+          setRoomIssues(data.result.length)
+          let pen = 0;
+            for (let i = 0; i < data.result.length; i++) {
+                if (data.result[i].status === "Pending") {
+                    pen = pen + 1;
+                }
+            }
+           setpendingroomissue(pen)
+        }
+      }
 
     const getchartData = async () => {
         if (selectedData === "All") {
@@ -105,13 +186,12 @@ const TableOne = () => {
                 console.log("error ");
 
             } else {
-                setRoomIssues(data.result)
                 const dateCounts = {};
                 data.result.forEach(entry => {
                     const timm = entry.time;
                     const firstFourChars = timm.slice(0, 5); // Get characters from index 0 to 3
                     const lastTwoChars = timm.slice(-2); // Get last 2 characters
-                    const date =firstFourChars+" "+lastTwoChars;
+                    const date = firstFourChars + " " + lastTwoChars;
                     if (dateCounts[date]) {
                         dateCounts[date]++;
                     } else {
@@ -147,13 +227,12 @@ const TableOne = () => {
                 console.log("error ");
 
             } else {
-                setRoomIssues(data.result)
                 const dateCounts = {};
                 data.result.forEach(entry => {
                     const timm = entry.time;
                     const firstFourChars = timm.slice(0, 5); // Get characters from index 0 to 3
                     const lastTwoChars = timm.slice(-2); // Get last 2 characters
-                    const date =firstFourChars+" "+lastTwoChars;
+                    const date = firstFourChars + " " + lastTwoChars;
                     if (dateCounts[date]) {
                         dateCounts[date]++;
                     } else {
@@ -175,44 +254,115 @@ const TableOne = () => {
         const selectedValue = event.target.value;
         setSelectedData(selectedValue);
     }
+    const getleave = async () => {
+
+        const res = await fetch(`http://localhost:8000/api/v1/getallstudentleaveapplication`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const data = await res.json();
+        if (res.status === 404) {
+            console.error("404 Error: Resource not found");
+            // Handle the error appropriately, e.g., display an error message to the user
+        }
+
+        if (res.status === 422 || !data) {
+            console.log("error ");
+
+        } else {
+            setLeaveData(data.result.length)
+            let pen = 0;
+            for (let i = 0; i < data.result.length; i++) {
+                if (data.result[i].status === "Pending") {
+                    pen = pen + 1;
+                }
+            }
+            setPendingleave(pen)
+        }
+    }
 
     useEffect(() => {
         getdata();
         getchartData();
+        getleave();
+        getroomissues();
     }, [selectedData]);
 
     return (
 
+        <>
+            <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
+                <div className="flex justify-end gap-4.5 mb-2.5">
+                    <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
+                        No of Qrcode Scanned per Time
+                    </h4>
+                    <label
+                        className="mb-3 block text-sm font-medium text-black dark:text-white"
+                        htmlFor="fullName"
+                    >
+                        Filter by Hostel Name:
+                    </label>
+                    <div className="relative">
+                        <select value={selectedData} onChange={handleDropdownChange}
+                            className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                        >
+                            {hostelNames.map((hostel, index) => (
+                                <option key={index} value={hostel}>{hostel}</option>
+                            ))}
+                        </select>
 
-        <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">                <div className="flex justify-end gap-4.5 mb-2.5">
-            <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
-                No of Qrcode Scanned per Time
-            </h4>
-            <label
-                className="mb-3 block text-sm font-medium text-black dark:text-white"
-                htmlFor="fullName"
-            >
-                Filter by Hostel Name:
-            </label>
-            <div className="relative">
-                <select value={selectedData} onChange={handleDropdownChange}
-                    className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                >
-                    {hostelNames.map((hostel, index) => (
-                        <option key={index} value={hostel}>{hostel}</option>
-                    ))}
-                </select>
-
+                    </div>
+                </div>
+                <ReactApexChart
+                    options={options}
+                    series={state.series}
+                    type="line"
+                    name="extra"
+                    height={350}
+                />
             </div>
-        </div>
-            <ReactApexChart
-                options={options}
-                series={state.series}
-                type="line"
-                name="extra"
-                height={350}
-            />
-        </div>
+            <div className="col-span-12 rounded-sm border border-stroke bg-white px-8 pt-8.5 pb-8 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-8.5 xl:col-span-6">
+                <div className="flex justify-end gap-4.5 mb-2.5">
+                    <h4 className="absolute left-25 mb-2 text-xl font-semibold text-black dark:text-white">
+                        Leave Application Data
+                    </h4>
+                    <br></br>
+
+                </div>
+                <div className="-ml-5 -mb-9">
+                <ReactApexChart
+                    options={options1}
+                    series={state.series1}
+                    type="pie"
+                    name="extra"
+                    height={350}
+                />
+                </div>
+            </div>
+            <div className="col-span-12 rounded-sm border border-stroke bg-white px-8 pt-8.5 pb-8 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-8.5 xl:col-span-6">
+                <div className="flex justify-end gap-4.5 mb-2.5">
+                    <h4 className="absolute left-155 mb-2 text-xl font-semibold text-black dark:text-white">
+                       Room Complaint Data
+                    </h4>
+                    <br></br>
+
+                </div>
+                <div className="-ml-5 -mb-9">
+                <ReactApexChart
+                    options={options2}
+                    series={state.series2}
+                    type="pie"
+                    name="extra"
+                    height={350}
+                />
+                </div>
+            </div>
+
+        </>
 
     );
 };
