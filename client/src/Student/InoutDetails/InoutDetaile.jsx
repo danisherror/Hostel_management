@@ -1,6 +1,8 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
 import React, { useEffect, useState } from 'react'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 // const packageData = []
 
 const TableThree = () => {
@@ -36,10 +38,37 @@ const TableThree = () => {
         getdata();
     }, [])
 
+    const generatePDFReport = () => {
+        const doc = new jsPDF();
+
+        // Define table column headers
+        const headers = ['Out Date', 'In Date'];
+
+        // Convert inout data into an array of arrays for the table
+        const tableData = inout.map(student => [student.out_date, student.in_date]);
+
+        // Add title to the PDF
+        doc.text("Student Time Log Report", 10, 10);
+
+        // Add table to the PDF
+        doc.autoTable({
+            startY: 20,
+            head: [headers], // Use the headers array
+            body: tableData
+        });
+        // Save the PDF
+        doc.save('student_time_log_report.pdf');
+    };
+
     return (
         <DefaultLayout>
             <Breadcrumb pageName="Check-in and Check-out" />
             <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+
+            <div className="flex justify-end gap-2.5">
+          <button className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90" onClick={generatePDFReport}>Generate Report</button>
+        </div>
+        <br></br>
                 <div className="scroll-container" style={{ maxHeight: '500px', overflowY: 'scroll' }}>
                     <table className="w-full table-auto">
                         <thead>
