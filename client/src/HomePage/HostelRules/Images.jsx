@@ -40,7 +40,7 @@ const HostelFacilities = () => {
         <DefaultLayout>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
                 {images.map((image, index) => (
-                    <div key={index} className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-blue-950" onClick={() => handleClick(image)}>
+                    <div key={index} className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark" onClick={() => handleClick(image)}>
                         <img src={image} alt={`Hostel Image ${index + 1}`} />
                     </div>
                 ))}

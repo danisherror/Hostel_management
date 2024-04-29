@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
     return (
         <DefaultLayout>
             <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="General Guidelines" />
 
                     {generalGuidelines.map((rule, index) => (
@@ -69,7 +69,7 @@ const HomePage: React.FC = () => {
 
                     </p>
                 </div>
-                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="General Information" />
                     {generalInformation.map((rule, index) => (
                         <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
@@ -79,7 +79,7 @@ const HomePage: React.FC = () => {
 
                     ))}
                 </div>
-                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="SUCH HOSTEL RESIDENTS WHO WISH TO VACATE THE HOSTEL EITHER IN THE BEGINNING OR DURING THE ACADEMIC SESSION IS ELIGIBLE FOR REFUNDS AS PER THE GUIDE LINES DETAILED BELOW:" />
                     <li style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
                         <span style={{ fontSize: '1.5em', marginRight: '5px' }}>•</span>

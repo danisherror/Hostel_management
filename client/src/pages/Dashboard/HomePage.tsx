@@ -41,11 +41,11 @@ const HomePage: React.FC = () => {
     return (
         <DefaultLayout>
             <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="Hostel" />
                     {heading}
                 </div>
-                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="Hostel Names" />
 
                     {hostelDetails.map((rule, index) => (
@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
 
                     ))}
                 </div>
-                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="Facilities Provided at Hostel" />
                     {facilities.map((rule, index) => (
                         <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
 
                     ))}
                 </div>
-                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+                <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     < ContactInfo />
 
                 </div>

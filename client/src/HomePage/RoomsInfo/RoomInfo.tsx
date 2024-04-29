@@ -34,9 +34,9 @@ const HomePage: React.FC = () => {
     return (
         <DefaultLayout>
             <Breadcrumb pageName="Room Info" />
-            <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+            <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5">
-                    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-blue-950">
+                    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
                         <div className={`room booked`}>
                             <h3 style={{ color: 'black' }}> Room is Filled</h3>
                             <h3 style={{ color: 'black' }}> Remaining space : 0</h3>
@@ -54,12 +54,12 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
             <br/>
-            <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-blue-950 sm:px-7.5 xl:col-span-12">
+            <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
 
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5">
 
                     {hostelDetails.map(room => (
-                        <div key={room} className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-blue-950">
+                        <div key={room} className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
 
                             <div key={room.id} className={`room ${room.studentIds.length === 2 ? 'booked' : (room.studentIds.length === 1 ? 'single' : 'free')}`}>
                                 <h3 style={{ color: 'black' }}>Room Number: {room.roomNumber}</h3>
