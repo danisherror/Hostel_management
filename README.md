@@ -1,4 +1,4 @@
-<h1>Working with my ui</h1>
+<!-- <h1>Working with my ui</h1>
 
 <h1>Steps to install dependency</h1>
 <h2>For client</h2>
@@ -16,4 +16,34 @@ npm install
 npm run dev<br/>
 <h2>For server</h2>
 npm start<br/>
+ -->
+
+
+
+# Steps to install dependency
+#### For client
+write command:
+
+```
+git clone https://github.com/danisherror/Hostel_management.git
+npm install --legacy-peer-deps
+```
+#### For server
+
+```
+npm install
+```
+
+
+# Steps to run the project:
+#### For client
+
+```
+npm run dev
+```
+#### For server
+```
+npm start
+```
+
 
