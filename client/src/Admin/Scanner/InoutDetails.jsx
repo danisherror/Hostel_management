@@ -57,7 +57,7 @@ const TableThree = () => {
           }
         },
         legend: {
-          show: false
+            position: 'bottom'
         },
         tooltip: {
           theme: 'dark'
