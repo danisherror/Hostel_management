@@ -32,39 +32,39 @@ npm start
 # Results
 
 ## Home Page
-![[Pasted image 20240430234811.png]]
-![[Pasted image 20240430234852.png]]
-![[Pasted image 20240430234831.png]]
-![[Pasted image 20240430234936.png]]
+![[Pasted image 20240430234811.png]](images/Pasted%20image%20240430234811.png)
+![[Pasted image 20240430234852.png]](images/Pasted%20image%20240430234852.png)
+![[Pasted image 20240430234831.png]](images/Pasted%20image%20240430234831.png)
+![[Pasted image 20240430234936.png]](images/Pasted%20image%20240430234936.png)
 
 ## Student Page
-![[Pasted image 20240430235038.png]]
-![[Pasted image 20240430235055.png]]
-![[Pasted image 20240430235116.png]]
-![[Pasted image 20240430235158.png]]
-![[Pasted image 20240430235249.png]]
-![[Pasted image 20240430235305.png]]
-![[Pasted image 20240430235325.png]]
-![[Pasted image 20240430235419.png]]
-![[Pasted image 20240430235435.png]]
+![[Pasted image 20240430235038.png]](images/Pasted%20image%20240430235038.png)
+![[Pasted image 20240430235055.png]](images/Pasted%20image%20240430235055.png)
+![[Pasted image 20240430235116.png]](images/Pasted%20image%20240430235116.png)
+![[Pasted image 20240430235158.png]](images/Pasted%20image%20240430235158.png)
+![[Pasted image 20240430235249.png]](images/Pasted%20image%20240430235249.png)
+![[Pasted image 20240430235305.png]](images/Pasted%20image%20240430235305.png)
+![[Pasted image 20240430235325.png]](images/Pasted%20image%20240430235325.png)
+![[Pasted image 20240430235419.png]](images/Pasted%20image%20240430235419.png)
+![[Pasted image 20240430235435.png]](images/Pasted%20image%20240430235435.png)
 
 ## Admin Page
-![[Pasted image 20240430235631.png]]
-![[Pasted image 20240430235648.png]]
-![[Pasted image 20240430235701.png]]
-![[Pasted image 20240430235728.png]]
-![[Pasted image 20240430235745.png]]
-![[Pasted image 20240430235801.png]]
-![[Pasted image 20240430235815.png]]
-![[Pasted image 20240430235833.png]]
-![[Pasted image 20240430235849.png]]
-![[Pasted image 20240430235927.png]]
-![[Pasted image 20240430235952.png]]
-![[Pasted image 20240501000018.png]]
-![[Pasted image 20240501000053.png]]
-![[Pasted image 20240501000119.png]]
-![[Pasted image 20240501000139.png]]
-![[Pasted image 20240501000156.png]]
+![[Pasted image 20240430235631.png]](images/Pasted%20image%20240430235631.png)
+![[Pasted image 20240430235648.png]](images/Pasted%20image%20240430235648.png)
+![[Pasted image 20240430235701.png]](images/Pasted%20image%20240430235701.png)
+![[Pasted image 20240430235728.png]](images/Pasted%20image%20240430235728.png)
+![[Pasted image 20240430235745.png]](images/Pasted%20image%20240430235745.png)
+![[Pasted image 20240430235801.png]](images/Pasted%20image%20240430235801.png)
+![[Pasted image 20240430235815.png]](images/Pasted%20image%20240430235815.png)
+![[Pasted image 20240430235833.png]](images/Pasted%20image%20240430235833.png)
+![[Pasted image 20240430235849.png]](images/Pasted%20image%20240430235849.png)
+![[Pasted image 20240430235927.png]](images/Pasted%20image%20240430235927.png)
+![[Pasted image 20240430235952.png]](images/Pasted%20image%20240430235952.png)
+![[Pasted image 20240501000018.png]](images/Pasted%20image%20240501000018.png)
+![[Pasted image 20240501000053.png]](images/Pasted%20image%20240501000053.png)
+![[Pasted image 20240501000119.png]](images/Pasted%20image%20240501000119.png)
+![[Pasted image 20240501000139.png]](images/Pasted%20image%20240501000139.png)
+![[Pasted image 20240501000156.png]](images/Pasted%20image%20240501000156.png)
 
 ---
 ---
