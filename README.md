@@ -32,7 +32,7 @@ npm start
 # Results
 
 ## Home Page
-![[Pasted image 20240430234811.png]](images/Pasted%20image%20240430234811.png)
+![[Pasted image 20240430234811.png]](images/Pasted%image%20240430234811.png)
 ![[Pasted image 20240430234852.png]](images/Pasted%20image%20240430234852.png)
 ![[Pasted image 20240430234831.png]](images/Pasted%20image%20240430234831.png)
 ![[Pasted image 20240430234936.png]](images/Pasted%20image%20240430234936.png)
