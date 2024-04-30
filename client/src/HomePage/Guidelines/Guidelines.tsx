@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import DefaultLayout from '../../layout/HomePage';
+import React from 'react'
+import HomePageLayout from '../../layout/HomePage';
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb"
-import ContactInfo from '../../HomePage/Contact/Contact';
-const HomePage: React.FC = () => {
+const Guidelines: React.FC = () => {
     const generalGuidelines: string[] = [
         "Hostel members should use water and electricity economically.",
         "Heaters or similar electrical appliances are not allowed. They should not meddle with the fittings already in their rooms or make any additional connections.",
@@ -37,16 +36,9 @@ const HomePage: React.FC = () => {
         "Health Care Center is being maintained in the hostel premises with a senior doctor available for consultation. Check-ups and medicines are provided free of cost.",
         "The Health Care Center/Dispensary is functional from 5.00 p.m. to 7.00 p.m. on all week days except on Sundays."
     ];
-    const refundPolicies: string[] = [
-        "IN CASE OF GETTING TRANSFERRED TO A DIFFERENT COLLEGE AFTER REMITTING THE HOSTEL FEE. Admission fee of Rs.1000/- shall be deducted and balance will be refunded.",
-        "STUDENTS VACATING THE HOSTEL WITHIN ONE MONTH FROM THE DATE OF ACTUAL OCCUPATION OF HOSTEL. 75% of Rent and Maintenance charges and balance of Mess Advance shall be refunded.",
-        "STUDENTS VACATING THE HOSTEL WITHIN THREE MONTHS FROM THE DATE OF ACTUAL OCCUPATION OF HOSTEL. 50% of Rent and Maintenance charges and balance of Mess Advance shall be refunded.",
-        "STUDENTS VACATING THE HOSTEL AFTER THREE MONTHS OF STAY INCLUDING LOSING ELIGIBILITY TO THE NEXT SEMESTER. Only balance of Mess Advance at their credit shall be refunded.",
-        "Security Deposit, however, will be refunded only after completing the course or officially being relieved from MSRIT."
-    ];
 
     return (
-        <DefaultLayout>
+        <HomePageLayout>
             <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
                 <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
                     <Breadcrumb pageName="General Guidelines" />
@@ -115,8 +107,8 @@ const HomePage: React.FC = () => {
                     </li>
                 </div>
             </div>
-        </DefaultLayout>
+        </HomePageLayout>
     );
 };
 
-export default HomePage;
+export default Guidelines;
