@@ -13,7 +13,7 @@ const FormElements = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/getsinglecomplain/${id}`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getsinglecomplain/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const FormElements = () => {
 
         try {
             e.preventDefault();
-        const response = await fetch(`http://localhost:8000/api/v1/editstudentcomplaintstatus/${id}`, {
+        const response = await fetch(`https://ereside-backend.onrender.com/api/v1/editstudentcomplaintstatus/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const FormElements = () => {
             alert("Complaint submitted successfully")
             navigate('/whomepage');
         }
-        
+
     } catch (error) {
         console.error('Error:', error);
 

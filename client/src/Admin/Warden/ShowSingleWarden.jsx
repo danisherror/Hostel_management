@@ -12,7 +12,7 @@ const Profile = () => {
     const token = getToken();
     const id = localStorage.getItem('id');
     const getdata = async () => {
-        const res = await fetch(`http://localhost:8000/api/v1/showWardenDetailsByid/${id}`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/showWardenDetailsByid/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

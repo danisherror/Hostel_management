@@ -172,7 +172,7 @@ const TableOne = () => {
     const token = getToken();
 
     const getdata = async () => {
-        const res = await fetch(`http://localhost:8000/api/v1/getUniqueHostelNames`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getUniqueHostelNames`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -185,7 +185,7 @@ const TableOne = () => {
     }
     const getroomissues = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/getstudentroomissues`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getstudentroomissues`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -216,7 +216,7 @@ const TableOne = () => {
 
     const getchartData = async () => {
         if (selectedData === "All") {
-            const res = await fetch(`http://localhost:8000/api/v1/getallqrtokens`, {
+            const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getallqrtokens`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -257,7 +257,7 @@ const TableOne = () => {
             }
         }
         else {
-            const res = await fetch(`http://localhost:8000/api/v1/getallqrtokensbyhostel/${selectedData}`, {
+            const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getallqrtokensbyhostel/${selectedData}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -305,7 +305,7 @@ const TableOne = () => {
     }
     const getleave = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/getallstudentleaveapplication`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getallstudentleaveapplication`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -335,7 +335,7 @@ const TableOne = () => {
     }
     const getroomdetails = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/getHostelDetails`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getHostelDetails`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -369,7 +369,7 @@ const TableOne = () => {
     }
     const getinoutsummary = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/agetinoutsummary`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/agetinoutsummary`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

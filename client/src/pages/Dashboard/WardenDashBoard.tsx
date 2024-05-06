@@ -22,7 +22,7 @@ const ECommerce: React.FC = () => {
 const token = getToken();
 const getroomissues = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/wgetstudentroomissues`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/wgetstudentroomissues`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const getroomissues = async () => {
 }
 const getstudent = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/wgetstudentprofiles`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/wgetstudentprofiles`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const getstudent = async () => {
 }
 const getleave = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/wgetallleaveapplication`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/wgetallleaveapplication`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const getleave = async () => {
 }
 const getfeedback = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/wgetstudentfeedback`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/wgetstudentfeedback`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",
@@ -118,7 +118,7 @@ const getfeedback = async () => {
 }
 const getannouncement = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/showwardenAnnouncements`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/showwardenAnnouncements`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",

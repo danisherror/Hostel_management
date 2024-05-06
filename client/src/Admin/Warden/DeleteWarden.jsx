@@ -14,7 +14,7 @@ const FormElements = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8000/api/v1/deleteWarden', {
+            const response = await fetch('https://ereside-backend.onrender.com/api/v1/deleteWarden', {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",

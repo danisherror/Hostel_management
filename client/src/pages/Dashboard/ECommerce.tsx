@@ -118,7 +118,7 @@ const ECommerce: React.FC = () => {
   };
   const getdata = async () => {
 
-    const res1 = await fetch(`http://localhost:8000/api/v1/getsingleqrtoken`, {
+    const res1 = await fetch(`https://ereside-backend.onrender.com/api/v1/getsingleqrtoken`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -153,7 +153,7 @@ const ECommerce: React.FC = () => {
   }
   const getdata1 = async () => {
 
-    const res = await fetch(`http://localhost:8000/api/v1/getsingleqrtoken`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getsingleqrtoken`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -195,7 +195,7 @@ const ECommerce: React.FC = () => {
 
   const getroomissues = async () => {
 
-    const res = await fetch(`http://localhost:8000/api/v1/getcomplain`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getcomplain`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -218,7 +218,7 @@ const ECommerce: React.FC = () => {
   }
   const getleave = async () => {
 
-    const res = await fetch(`http://localhost:8000/api/v1/getleaveapplication`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getleaveapplication`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -242,7 +242,7 @@ const ECommerce: React.FC = () => {
 
 const getfeedback = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/getfeedback`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getfeedback`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -265,7 +265,7 @@ const getfeedback = async () => {
 }
 const getannouncement = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/showStudentAnnouncements`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/showStudentAnnouncements`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",

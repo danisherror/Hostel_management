@@ -28,7 +28,7 @@ const FormElements = () => {
         const url1 = ImgData.url
         setUrl(url1);
         const { hostelName, announcement } = formData;
-        const response = await fetch(`http://localhost:8000/api/v1/updateAnnouncement/${id}`, {
+        const response = await fetch(`https://ereside-backend.onrender.com/api/v1/updateAnnouncement/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const FormElements = () => {
     useEffect(() => {
         const getdata = async () => {
 
-            const res1 = await fetch(`http://localhost:8000/api/v1/getsingleAnnouncement/${id}`, {
+            const res1 = await fetch(`https://ereside-backend.onrender.com/api/v1/getsingleAnnouncement/${id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

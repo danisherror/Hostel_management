@@ -19,7 +19,7 @@ const DeleteHostelForm = () => {
 
         console.log(hostelName)
         try {
-            const response = await fetch('http://localhost:8000/api/v1/deleteHostel', {
+            const response = await fetch('https://ereside-backend.onrender.com/api/v1/deleteHostel', {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",

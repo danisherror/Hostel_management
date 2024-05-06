@@ -31,7 +31,7 @@ const Settings = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/adminprofile`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/adminprofile`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const Settings = () => {
 
         const { name, email, collegeid, phone } = inpval;
 
-        const res2 = await fetch(`http://localhost:8000/api/v1/editAdminProfile`, {
+        const res2 = await fetch(`https://ereside-backend.onrender.com/api/v1/editAdminProfile`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -96,7 +96,7 @@ const Settings = () => {
       const url1=ImgData.url
       setUrl(url1);
       //const pus=url1.toString()
-      const res2 = await fetch(`http://localhost:8000/api/v1/aeditImage`,{
+      const res2 = await fetch(`https://ereside-backend.onrender.com/api/v1/aeditImage`,{
           method: "PATCH",
           headers: {
               "Content-Type": "application/json",

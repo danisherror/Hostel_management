@@ -28,7 +28,7 @@ const ECommerce: React.FC = () => {
 
   const getfeedback = async () => {
 
-    const res = await fetch(`http://localhost:8000/api/v1/getstudentfeedback`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getstudentfeedback`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const ECommerce: React.FC = () => {
   }
   const getleave = async () => {
 
-    const res = await fetch(`http://localhost:8000/api/v1/getallstudentleaveapplication`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getallstudentleaveapplication`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const ECommerce: React.FC = () => {
   }
   const getstudent = async () => {
 
-    const res = await fetch(`http://localhost:8000/api/v1/getstudentprofiles`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getstudentprofiles`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const ECommerce: React.FC = () => {
   }
   const getroomissues = async () => {
 
-    const res = await fetch(`http://localhost:8000/api/v1/getstudentroomissues`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getstudentroomissues`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ const ECommerce: React.FC = () => {
     }
   }
   const gethostel= async () => {
-    const res = await fetch(`http://localhost:8000/api/v1/getUniqueHostelNames`, {
+    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getUniqueHostelNames`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -132,7 +132,7 @@ const ECommerce: React.FC = () => {
 }
 const getannouncement = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/showAllAnnouncements`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/showAllAnnouncements`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",
@@ -155,7 +155,7 @@ const getannouncement = async () => {
 }
 const getinoutsummary = async () => {
 
-  const res = await fetch(`http://localhost:8000/api/v1/agetinoutsummary`, {
+  const res = await fetch(`https://ereside-backend.onrender.com/api/v1/agetinoutsummary`, {
       method: "GET",
       headers: {
           "Content-Type": "application/json",

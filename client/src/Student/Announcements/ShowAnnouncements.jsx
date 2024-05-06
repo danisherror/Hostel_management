@@ -17,7 +17,7 @@ const TableOne = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/showStudentAnnouncements`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/showStudentAnnouncements`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

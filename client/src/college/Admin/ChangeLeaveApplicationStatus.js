@@ -39,7 +39,7 @@ const ChangeLeaveApplicationStatus = () => {
         }
         const token = localStorage.getItem('token');
         console.log(startDate,endDate,reason)
-        const response = await fetch(`http://localhost:8000/api/v1/updateleaveappliacation/${id}`, {
+        const response = await fetch(`https://ereside-backend.onrender.com/api/v1/updateleaveappliacation/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -65,7 +65,7 @@ const ChangeLeaveApplicationStatus = () => {
     };
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:8000/api/v1/getsingleleaveapplication/${id}`, {
+        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getsingleleaveapplication/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

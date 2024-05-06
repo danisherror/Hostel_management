@@ -57,7 +57,7 @@ const SignUp: React.FC = () => {
 
 
       if (type === "student") {
-        const response = await axios.post('http://localhost:8000/api/v1/usignup', {
+        const response = await axios.post('https://ereside-backend.onrender.com/api/v1/usignup', {
           name, email, password, url1, collegeid, phone, semester
         });
         console.log(response);
@@ -73,7 +73,7 @@ const SignUp: React.FC = () => {
         }
       }
       else {
-        const response = await axios.post('http://localhost:8000/api/v1/asignup', {
+        const response = await axios.post('https://ereside-backend.onrender.com/api/v1/asignup', {
           name, email, password, url1, collegeid, phone
         });
         console.log(response);

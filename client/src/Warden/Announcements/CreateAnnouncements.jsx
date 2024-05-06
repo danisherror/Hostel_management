@@ -27,7 +27,7 @@ const FormElements = () => {
         const url1=ImgData.url
         setUrl(url1);
         const { hostelName, announcement } = formData;
-        const response = await fetch(`http://localhost:8000/api/v1/createAnnouncement`, {
+        const response = await fetch(`https://ereside-backend.onrender.com/api/v1/createAnnouncement`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const FormElements = () => {
     };
     useEffect(() => {
         const getdata = async () => {
-            const res = await fetch(`http://localhost:8000/api/v1/showWardenDetailsByToken`, {
+            const res = await fetch(`https://ereside-backend.onrender.com/api/v1/showWardenDetailsByToken`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
