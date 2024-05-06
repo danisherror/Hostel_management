@@ -20,7 +20,7 @@ const warden =require('./Routes/warden')
 const inout=require('./Routes/inout')
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: process.env.front_end_url
 }));
 //test route
 app.use("/api/v1",user)
