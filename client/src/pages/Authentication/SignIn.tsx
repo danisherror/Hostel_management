@@ -42,7 +42,7 @@ const SignIn: React.FC = () => {
 
 
       if (type === "student") {
-        const response = await axios.post('https://ereside-backend.onrender.com/api/v1/usignin', {
+        const response = await axios.post('http://localhost:8000/api/v1/usignin', {
           email,
           password,
         })
@@ -57,7 +57,7 @@ const SignIn: React.FC = () => {
         }
       }
       else if (type === "warden") {
-        const response = await axios.post('https://ereside-backend.onrender.com/api/v1/wsignin', {
+        const response = await axios.post('http://localhost:8000/api/v1/wsignin', {
           email,
           password,
         })
@@ -72,7 +72,7 @@ const SignIn: React.FC = () => {
         }
       }
       else {
-        const response = await axios.post('https://ereside-backend.onrender.com/api/v1/asignin', {
+        const response = await axios.post('http://localhost:8000/api/v1/asignin', {
           email,
           password,
         })

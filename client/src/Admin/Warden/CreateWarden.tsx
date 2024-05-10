@@ -50,7 +50,7 @@ const SignUp: React.FC = () => {
 
     try {
       const { name, email, password, collegeid, phone, hostelName } = formData;
-      const response = await fetch(`https://ereside-backend.onrender.com/api/v1/wsignup`, {
+      const response = await fetch(`http://localhost:8000/api/v1/wsignup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const SignUp: React.FC = () => {
   };
   useEffect(() => {
     const getdata = async () => {
-      const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getUniqueHostelNames`, {
+      const res = await fetch(`http://localhost:8000/api/v1/getUniqueHostelNames`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

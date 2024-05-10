@@ -14,7 +14,7 @@ const TableOne = () => {
     const navigate = useNavigate();
     const getdata = async () => {
 
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/showwardenAnnouncements`, {
+        const res = await fetch(`http://localhost:8000/api/v1/showwardenAnnouncements`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const TableOne = () => {
         const confirmation = window.confirm("Are you sure you want to delete this announcement?");
     if (confirmation) {
 
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/wdeleteAnnouncement/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/wdeleteAnnouncement/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

@@ -17,7 +17,7 @@ const TableOne = () => {
 
   const getdata = async () => {
 
-    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getstudentprofiles`, {
+    const res = await fetch(`http://localhost:8000/api/v1/getstudentprofiles`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const TableOne = () => {
     const confirmation = window.confirm("Are you sure you want to delete this student hostel info?\n All Student info will be deleted");
     if (confirmation) {
 
-      const res = await fetch(`https://ereside-backend.onrender.com/api/v1/deleteStudentInfo/${id}`, {
+      const res = await fetch(`http://localhost:8000/api/v1/deleteStudentInfo/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +111,7 @@ const TableOne = () => {
     const confirmation = window.confirm("Are you sure you want to delete this Student?");
     if (confirmation) {
 
-      const res = await fetch(`https://ereside-backend.onrender.com/api/v1/deleteStudent/${id}`, {
+      const res = await fetch(`http://localhost:8000/api/v1/deleteStudent/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

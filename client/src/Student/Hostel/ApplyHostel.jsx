@@ -41,7 +41,7 @@ const FormElements = () => {
         try {
             // console.log(formData)
             const { hostelName, block, roomNo } = formData;
-            const response = await fetch(`https://ereside-backend.onrender.com/api/v1/applyHostel`, {
+            const response = await fetch(`http://localhost:8000/api/v1/applyHostel`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const FormElements = () => {
     };
     useEffect(() => {
         const getdata = async () => {
-            const res = await fetch(`https://ereside-backend.onrender.com/api/v1/hostelFormDetails`, {
+            const res = await fetch(`http://localhost:8000/api/v1/hostelFormDetails`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

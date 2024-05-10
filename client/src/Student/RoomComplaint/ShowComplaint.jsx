@@ -15,7 +15,7 @@ const TableOne = () => {
 
   const getdata = async () => {
 
-    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getcomplain`, {
+    const res = await fetch(`http://localhost:8000/api/v1/getcomplain`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const TableOne = () => {
       const confirmation = window.confirm("Are you sure you want to delete this Room Complaint?");
       if (confirmation) {
 
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/deleteComplaint/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/deleteComplaint/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

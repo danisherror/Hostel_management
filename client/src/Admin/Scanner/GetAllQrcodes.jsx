@@ -57,7 +57,7 @@ const TableOne = () => {
     const token = getToken();
 
     const getdata = async () => {
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getUniqueHostelNames`, {
+        const res = await fetch(`http://localhost:8000/api/v1/getUniqueHostelNames`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const TableOne = () => {
 
     const getchartData = async () => {
         if (selectedData === "All") {
-            const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getallqrtokens`, {
+            const res = await fetch(`http://localhost:8000/api/v1/getallqrtokens`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const TableOne = () => {
             }
         }
         else {
-            const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getallqrtokensbyhostel/${selectedData}`, {
+            const res = await fetch(`http://localhost:8000/api/v1/getallqrtokensbyhostel/${selectedData}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

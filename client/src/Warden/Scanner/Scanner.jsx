@@ -34,7 +34,7 @@ const FormElements = () => {
     const sendTokensToBackend = async (e) => {
         try {
             e.preventDefault();
-            const response = await fetch('https://ereside-backend.onrender.com/api/v1/waddqrtokens', {
+            const response = await fetch('http://localhost:8000/api/v1/waddqrtokens', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

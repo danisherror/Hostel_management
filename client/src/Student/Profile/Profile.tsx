@@ -19,7 +19,7 @@ const Profile = () => {
 
   const [qrCodeText, setQRCodeText] = useState('');
   const getdata = async () => {
-    const res = await fetch(`https://ereside-backend.onrender.com/api/v1/studentProfile`, {
+    const res = await fetch(`http://localhost:8000/api/v1/studentProfile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const Profile = () => {
 
 
     const id = data.user._id
-    const res2 = await fetch(`https://ereside-backend.onrender.com/api/v1/getStudentHostel/${id}`, {
+    const res2 = await fetch(`http://localhost:8000/api/v1/getStudentHostel/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -59,7 +59,7 @@ const Profile = () => {
         }
     };
     const getdata = async () => {
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/astudentProfile/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/astudentProfile/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const Profile = () => {
         }
 
 
-        const res1 = await fetch(`https://ereside-backend.onrender.com/api/v1/wgetsingleqrtokenid/${id}`, {
+        const res1 = await fetch(`http://localhost:8000/api/v1/wgetsingleqrtokenid/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -116,7 +116,7 @@ const Profile = () => {
             setuniqueDate(uniqueDatesArray);
         }
 
-        const res2 = await fetch(`https://ereside-backend.onrender.com/api/v1/getStudentHostel/${id}`, {
+        const res2 = await fetch(`http://localhost:8000/api/v1/getStudentHostel/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

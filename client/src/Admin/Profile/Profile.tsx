@@ -11,7 +11,7 @@ const Profile = () => {
     const token = getToken();
     const getdata = async () => {
 
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/adminprofile`, {
+        const res = await fetch(`http://localhost:8000/api/v1/adminprofile`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

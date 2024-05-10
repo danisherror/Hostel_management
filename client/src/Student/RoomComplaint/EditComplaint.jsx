@@ -8,7 +8,7 @@ const FormElements = () => {
     const navigate = useNavigate();
     const id=localStorage.getItem("id")
     const submitFeedback = async () => {
-        const response = await fetch(`https://ereside-backend.onrender.com/api/v1/updatecomplaint/${id}`, {
+        const response = await fetch(`http://localhost:8000/api/v1/updatecomplaint/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const FormElements = () => {
     };
     const getdata = async () => {
 
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/getsinglecomplain/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/getsinglecomplain/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

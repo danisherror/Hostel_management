@@ -42,7 +42,7 @@ const EditStudentProfile = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/studentProfile`, {
+        const res = await fetch(`http://localhost:8000/api/v1/studentProfile`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const EditStudentProfile = () => {
 
         const { name, email, collegeid, phone, semester } = inpval;
 
-        const res2 = await fetch(`https://ereside-backend.onrender.com/api/v1/editStudentProfile`, {
+        const res2 = await fetch(`http://localhost:8000/api/v1/editStudentProfile`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

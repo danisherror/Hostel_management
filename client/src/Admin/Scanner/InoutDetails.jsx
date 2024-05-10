@@ -65,7 +65,7 @@ const TableThree = () => {
       };
 
     const getdata = async () => {
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/agetinoutdetail/${id}`, {
+        const res = await fetch(`http://localhost:8000/api/v1/agetinoutdetail/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

@@ -20,7 +20,7 @@ const TableOne = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`https://ereside-backend.onrender.com/api/v1/wgetHostelDetails`, {
+        const res = await fetch(`http://localhost:8000/api/v1/wgetHostelDetails`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

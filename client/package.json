@@ -1,6 +1,6 @@
 {
   "name": "tailadmin-react-free",
-  "proxy": "https://ereside-backend.onrender.com",
+  "proxy": "http://localhost:8000",
   "private": true,
   "version": "1.3.0",
   "type": "module",
