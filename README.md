@@ -1,4 +1,3 @@
-Here’s a polished **ATS-friendly resume bullet list** for your **Hostel Management System** project 👇
 
 ### 🚀 Hostel Management System (MongoDB, React, Node.js, Express.js, JWT, Charts/Graphs)
 
