@@ -1,3 +1,20 @@
+Here’s a polished **ATS-friendly resume bullet list** for your **Hostel Management System** project 👇
+
+### 🚀 Hostel Management System (MongoDB, React, Node.js, Express.js, JWT, Charts/Graphs)
+
+* Developed a **full-stack hostel management platform** providing students, wardens, and admins with role-based access and functionality.
+* Built **student portal** for room booking, room change requests, complaint submission, leave applications, feedback, announcements, and **QR code–based check-in/out tracking with timestamps**.
+* Implemented **admin dashboard** to manage hostels, assign/remove wardens, create/edit/delete rooms, handle complaints/feedback/leave requests, and view **analytics via charts/graphs** (complaints resolved, student occupancy, live in/out status).
+* Designed **warden panel** with hostel-specific data access to monitor student complaints, leaves, and activities.
+* Integrated **dark/light mode UI** for accessibility and user-friendly experience.
+* Utilized **JWT authentication & authorization** for secure login and role-based access control.
+* Leveraged **MongoDB for scalable data storage**, **React for responsive frontend**, and **Express.js/Node.js for backend APIs**.
+
+
+
+
+
+
 # Steps to install dependency
 #### For client
 
